@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =================================================================
+                    Overriding react-dates Styling 
+                The order of the styles is important 
+================================================================= */
+
+.DateInput_fang {
+  display: none;
+}
+.DateRangePicker {
+  width: 100%;
+  margin-top: auto;
+  height: 100%;
+}
+.DateRangePickerInput {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media (min-width: 768px) {
+  .DateRangePickerInput {
+    flex-direction: row;
+  }
+}
+.DateRangePickerInput_arrow {
+  display: none;
+}
+.DateRangePickerInput_clearDates,
+.SingleDatePickerInput_clearDate {
+  z-index: 50;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.DateInput {
+  z-index: 1;
+  opacity: 0 !important;
+  margin: 5px 30px;
+  width: 100%;
+}
+.StayDatesRangeInput .DateInput,
+.ExperiencesDateSingleInput .DateInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+}
+@media (min-width: 1024px) {
+  .StayDatesRangeInput .DateInput,
+  .ExperiencesDateSingleInput .DateInput {
+    bottom: 0;
+    height: 100%;
+    width: 50%;
+  }
+}
+.StayDatesRangeInput .DateInput ~ .DateInput,
+.ExperiencesDateSingleInput .DateInput ~ .DateInput {
+  right: 0;
+  bottom: 0;
+  top: auto;
+}
+@media (min-width: 1024px) {
+  .StayDatesRangeInput .DateInput ~ .DateInput,
+  .ExperiencesDateSingleInput .DateInput ~ .DateInput {
+    top: 0;
+    left: auto;
+  }
+}
+.RentalCarDatesRangeInput .DateInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: 50%;
+}
+@media (min-width: 1280px) {
+  .RentalCarDatesRangeInput .DateInput {
+    bottom: 0;
+    height: 100%;
+    width: 50%;
+  }
+}
+.RentalCarDatesRangeInput .DateInput ~ .DateInput {
+  right: 0;
+  bottom: 0;
+  top: auto;
+}
+@media (min-width: 1280px) {
+  .RentalCarDatesRangeInput .DateInput ~ .DateInput {
+    top: 0;
+  }
+}
+.RentalCarDatesRangeInput.RentalCarDetailPageDatesRangeInput .DateInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  height: 50%;
+}
+.RentalCarDatesRangeInput.RentalCarDetailPageDatesRangeInput
+  .DateInput
+  ~ .DateInput {
+  right: 0;
+  bottom: 0;
+  top: auto;
+}
+.SingleDatePicker {
+  margin-top: auto;
+  height: 100%;
+  width: 100%;
+}
+.SingleDatePicker .DateInput {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.SingleDatePicker .SingleDatePickerInput_clearDate {
+  z-index: 20;
+}
+.SingleDatePickerInput {
+  background: transparent;
+}
+.DayPickerNavigation_button__horizontalDefault {
+  padding: 10px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  height: 2.25rem;
+  width: 2.25rem;
+}
+.DayPickerNavigation_button__horizontalDefault svg {
+  fill: currentColor;
+}
+.DayPickerNavigation_svg__horizontal {
+  width: 1rem;
+  height: 1rem;
+}
+.CalendarMonth_caption strong {
+  font-weight: 600;
+  color: #262626;
+}
+.DayPicker_weekHeader {
+  color: #737373;
+}
+.DateRangePicker_picker,
+.SingleDatePicker_picker {
+  top: 100%;
+  margin-top: 0.75rem;
+}
+.SingleDatePicker_picker,
+.DateRangePicker_picker,
+.CalendarMonthGrid,
+.CalendarMonth {
+  background-color: transparent !important;
+}
+.DayPicker__withBorder,
+.DateRangePicker_picker {
+  z-index: 40;
+  top: 40px;
+  border-radius: 1.5rem;
+  background: #ffff;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.CalendarDay__default.CalendarDay__blocked_out_of_range,
+.CalendarDay__default.CalendarDay__blocked_out_of_range:active,
+.CalendarDay__default.CalendarDay__blocked_out_of_range:hover {
+  background-color: transparent;
+  width: 3rem;
+  height: 3rem;
+  border-width: 1px;
+  border-color: transparent;
+  cursor: not-allowed;
+  color: #c0c0c0;
+}
+.CalendarDay__default.CalendarDay__blocked_out_of_range:hover,
+.CalendarDay__default.CalendarDay__blocked_out_of_range:active:hover,
+.CalendarDay__default.CalendarDay__blocked_out_of_range:hover:hover {
+  background: transparent;
+}
+.CalendarDay__default {
+  color: #5757ff;
+  background-color: transparent;
+  width: 3rem;
+  height: 3rem;
+  border-width: 1px;
+  border-color: transparent;
+}
+.CalendarDay__default:hover {
+  background-color: #0096c7;
+  color: white;
+  border-color: transparent;
+}
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  border-width: 0;
+  background-color: #0096c7;
+  color: whitesmoke;
+}
+.CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span,
+.CalendarDay__selected_span {
+  border-width: 0;
+  background-color: #ade8f4;
+  color: #404040;
+}
+.listingSection__wrap__DayPickerRangeController .DayPicker__withBorder {
+  border-radius: 0.75rem;
+  box-shadow: none;
+  border-color: #e5e5e5;
+}
+@media (min-width: 1280px) {
+  .listingSection__wrap__DayPickerRangeController .DayPicker__withBorder {
+    margin-left: 0;
+  }
+}
+.nc-SetYourAvailabilityData .CalendarDay__highlighted_calendar {
+  position: relative;
+  background-color: #e5e5e5;
+  color: #404040;
+}
+.nc-SetYourAvailabilityData .CalendarDay__highlighted_calendar::after {
+  content: '';
+  width: 1px;
+  height: 30px;
+  left: 50%;
+  transform: rotate(-40deg);
+  background-color: black;
+  position: absolute;
+}
+
+/* ================================================================= */
