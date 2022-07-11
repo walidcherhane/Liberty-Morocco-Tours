@@ -370,6 +370,7 @@ const renderTourComments = (Tour: TourProps) => {
           const authorImage =
             comment?.author.avatar.gatsbyImageData &&
             getImage(comment?.author.avatar.gatsbyImageData);
+          if (!comment?.comment) return null;
           return (
             <div
               className="flex flex-col items-start border rounded-2xl p-8 grow gap-4"
@@ -400,6 +401,7 @@ const renderTourComments = (Tour: TourProps) => {
                 </div>
               </div>
               <p className="text-sm text-gray-700 mt-2 ml-4 indent-10">
+                {/* @ts-ignore */}
                 {renderRichText(comment?.comment, options)}
               </p>
             </div>
@@ -418,6 +420,7 @@ const renderTourDescription = (Tour: TourProps) => {
       <>
         <h1 className="text-gray-900 text-2xl font-semibold  ">Overview</h1>
         <p className="font-light text-sm text-gray-500 mt-3  ">
+          {/* @ts-ignore */}
           {renderRichText(Tour.description, options)}
         </p>
       </>
