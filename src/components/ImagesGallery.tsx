@@ -46,7 +46,7 @@ const PrevImage: React.FC<{
           </div>
         </div>
         {isZoomed && (
-          <motion.div
+          <motion.img
             transition={{ duration: 0.2 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -56,7 +56,7 @@ const PrevImage: React.FC<{
             }}
             className="fixed inset-0 z-50 bg-gray-900/80  w-full flex items-center justify-center"
           >
-            <div className="relative z-10">
+            <div className="relative z-10 ">
               <motion.img
                 key="modal"
                 transition={{ duration: 0.2 }}
@@ -77,7 +77,7 @@ const PrevImage: React.FC<{
                 <AiOutlineLoading3Quarters />
               </div>
             </div>
-          </motion.div>
+          </motion.img>
         )}
       </div>
     </AnimatePresence>

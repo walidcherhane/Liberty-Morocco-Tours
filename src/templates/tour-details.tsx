@@ -17,6 +17,7 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import React, { ReactNode } from 'react';
+import { ToursQuery } from '@/types';
 
 export declare type NodeData = Record<string, any>;
 
@@ -98,7 +99,8 @@ const options = {
   },
 };
 
-type TourProps = Queries.TourItemQuery['allContentfulTour']['edges'][0]['node'];
+type TourProps =
+  ToursQuery.TourItemQuery['allContentfulTour']['edges'][0]['node'];
 
 const renderRatingStars = (rating: number) => {
   const stars = [];
@@ -353,7 +355,6 @@ const renderAddCommentForm = () => {
 const renderTourComments = (Tour: TourProps) => {
   const comments = Tour.comments;
   if (!comments) return;
-  if (comments[0]?.author !== null) return;
   return (
     <>
       <h1 className="text-gray-900 text-2xl font-semibold  ">
@@ -366,6 +367,9 @@ const renderTourComments = (Tour: TourProps) => {
       </p>
       <div className="flex flex-col gap-4 my-8">
         {comments.map((comment) => {
+          const authorImage =
+            comment?.author.avatar.gatsbyImageData &&
+            getImage(comment?.author.avatar.gatsbyImageData);
           return (
             <div
               className="flex flex-col items-start border rounded-2xl p-8 grow gap-4"
@@ -373,8 +377,8 @@ const renderTourComments = (Tour: TourProps) => {
             >
               <div className="flex items-center   grow gap-2">
                 <div className="w-16 h-16 rounded-2xl overflow-hidden bg-gray-100">
-                  {comment?.author?.avatar && (
-                    <img src={comment.author.avatar?.publicUrl} alt="author" />
+                  {authorImage && (
+                    <GatsbyImage image={authorImage} alt="author" />
                   )}
                 </div>
                 <div className="flex-1">
@@ -632,7 +636,7 @@ const renderNeedHelp = () => {
   );
 };
 
-function Tour({ data }: PageProps<Queries.TourItemQuery>) {
+function Tour({ data }: PageProps<ToursQuery.TourItemQuery>) {
   const tour = data.allContentfulTour.edges[0].node;
   return (
     <>
@@ -710,10 +714,13 @@ export const query = graphql`
               raw
             }
             author {
-              name
-              avatar {
-                publicUrl
-                gatsbyImageData
+              ... on ContentfulClient {
+                id
+                name
+                avatar {
+                  publicUrl
+                  gatsbyImageData
+                }
               }
             }
           }

@@ -7,12 +7,10 @@ import TourCard from '../../components/TourCard/BasicTourCard';
 import WideTourCard from '../../components/TourCard/WideTourCard';
 import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
+import { ToursQuery } from '@/types';
 
-// eslint-disable-next-line no-undef
-function ToursList({ data }: PageProps<Queries.AllToursQuery>) {
+function ToursList({ data }: PageProps<ToursQuery.AllToursQuery>) {
   const tours = data.allContentfulTour.edges;
-  console.log(tours[0].node.title);
-  // console.log(node);
   return (
     <>
       <Header />
@@ -89,10 +87,13 @@ export const query = graphql`
               raw
             }
             author {
-              name
-              avatar {
-                publicUrl
-                gatsbyImageData
+              ... on ContentfulClient {
+                id
+                name
+                avatar {
+                  publicUrl
+                  gatsbyImageData
+                }
               }
             }
           }
