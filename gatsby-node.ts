@@ -31,3 +31,48 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
+
+// export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
+//   ({ actions }) => {
+//     actions.createTypes(`
+//     type allContentfulTour {
+//       nodes: Tour!
+//     }
+
+//     type Tour {
+//        slug: string
+//         id: ID
+//         title: string
+//         price: number
+//         previousPrice: number
+//         rating: number
+//         cities: [String]
+//         languages: [String]
+//         tags: [String]
+//         categories: [String]
+//         duration: number
+//         description: {raw: string}
+//         image: {
+//             publicUrl: string
+//             gatsbyImageData: Record<string, unknown>
+//       }
+//         images: Array<{
+//           publicUrl: string
+//           id: string
+//           gatsbyImageData: Record<string, unknown>
+//       }>
+//         comments: Array<{
+//           id: string
+//           rating: number
+//           comment: {  raw: string }
+//           author: {
+//             name: string
+//             avatar: {
+//               publicUrl: string
+//               gatsbyImageData: Record<string, unknown>
+//           }
+//         }
+//       }>
+//     }
+//   `);
+//   };

@@ -1151,26 +1151,7 @@ type ContentfulClientFieldsEnum =
   | 'comments.tour.tags'
   | 'comments.tour.title'
   | 'comments.tour.updatedAt'
-  | 'comments.tour.video.children'
-  | 'comments.tour.video.contentful_id'
-  | 'comments.tour.video.createdAt'
-  | 'comments.tour.video.description'
-  | 'comments.tour.video.filename'
-  | 'comments.tour.video.filesize'
-  | 'comments.tour.video.gatsbyImage'
-  | 'comments.tour.video.gatsbyImageData'
-  | 'comments.tour.video.height'
-  | 'comments.tour.video.id'
-  | 'comments.tour.video.mimeType'
-  | 'comments.tour.video.node_locale'
-  | 'comments.tour.video.placeholderUrl'
-  | 'comments.tour.video.publicUrl'
-  | 'comments.tour.video.size'
-  | 'comments.tour.video.spaceId'
-  | 'comments.tour.video.title'
-  | 'comments.tour.video.updatedAt'
-  | 'comments.tour.video.url'
-  | 'comments.tour.video.width'
+  | 'comments.tour.video'
   | 'comments.updatedAt'
   | 'contentful_id'
   | 'createdAt'
@@ -1544,6 +1525,7 @@ type ContentfulCommentsFieldsEnum =
   | 'author.comments.tour.tags'
   | 'author.comments.tour.title'
   | 'author.comments.tour.updatedAt'
+  | 'author.comments.tour.video'
   | 'author.comments.updatedAt'
   | 'author.contentful_id'
   | 'author.createdAt'
@@ -1749,6 +1731,7 @@ type ContentfulCommentsFieldsEnum =
   | 'tour.comments.tour.tags'
   | 'tour.comments.tour.title'
   | 'tour.comments.tour.updatedAt'
+  | 'tour.comments.tour.video'
   | 'tour.comments.updatedAt'
   | 'tour.contentful_id'
   | 'tour.createdAt'
@@ -1870,46 +1853,7 @@ type ContentfulCommentsFieldsEnum =
   | 'tour.tags'
   | 'tour.title'
   | 'tour.updatedAt'
-  | 'tour.video.children'
-  | 'tour.video.children.children'
-  | 'tour.video.children.id'
-  | 'tour.video.contentful_id'
-  | 'tour.video.createdAt'
-  | 'tour.video.description'
-  | 'tour.video.file.contentType'
-  | 'tour.video.file.fileName'
-  | 'tour.video.file.url'
-  | 'tour.video.filename'
-  | 'tour.video.filesize'
-  | 'tour.video.gatsbyImage'
-  | 'tour.video.gatsbyImageData'
-  | 'tour.video.height'
-  | 'tour.video.id'
-  | 'tour.video.internal.content'
-  | 'tour.video.internal.contentDigest'
-  | 'tour.video.internal.description'
-  | 'tour.video.internal.fieldOwners'
-  | 'tour.video.internal.ignoreType'
-  | 'tour.video.internal.mediaType'
-  | 'tour.video.internal.owner'
-  | 'tour.video.internal.type'
-  | 'tour.video.mimeType'
-  | 'tour.video.node_locale'
-  | 'tour.video.parent.children'
-  | 'tour.video.parent.id'
-  | 'tour.video.placeholderUrl'
-  | 'tour.video.publicUrl'
-  | 'tour.video.resize.height'
-  | 'tour.video.resize.src'
-  | 'tour.video.resize.width'
-  | 'tour.video.size'
-  | 'tour.video.spaceId'
-  | 'tour.video.sys.revision'
-  | 'tour.video.sys.type'
-  | 'tour.video.title'
-  | 'tour.video.updatedAt'
-  | 'tour.video.url'
-  | 'tour.video.width'
+  | 'tour.video'
   | 'updatedAt';
 
 type ContentfulCommentsFilterInput = {
@@ -2850,7 +2794,7 @@ type ContentfulTour = ContentfulEntry & ContentfulReference & Node & {
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly title: Maybe<Scalars['String']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
-  readonly video: Maybe<ContentfulAsset>;
+  readonly video: Maybe<Scalars['String']>;
 };
 
 
@@ -3155,26 +3099,7 @@ type ContentfulTourFieldsEnum =
   | 'comments.tour.tags'
   | 'comments.tour.title'
   | 'comments.tour.updatedAt'
-  | 'comments.tour.video.children'
-  | 'comments.tour.video.contentful_id'
-  | 'comments.tour.video.createdAt'
-  | 'comments.tour.video.description'
-  | 'comments.tour.video.filename'
-  | 'comments.tour.video.filesize'
-  | 'comments.tour.video.gatsbyImage'
-  | 'comments.tour.video.gatsbyImageData'
-  | 'comments.tour.video.height'
-  | 'comments.tour.video.id'
-  | 'comments.tour.video.mimeType'
-  | 'comments.tour.video.node_locale'
-  | 'comments.tour.video.placeholderUrl'
-  | 'comments.tour.video.publicUrl'
-  | 'comments.tour.video.size'
-  | 'comments.tour.video.spaceId'
-  | 'comments.tour.video.title'
-  | 'comments.tour.video.updatedAt'
-  | 'comments.tour.video.url'
-  | 'comments.tour.video.width'
+  | 'comments.tour.video'
   | 'comments.updatedAt'
   | 'contentful_id'
   | 'createdAt'
@@ -3373,71 +3298,7 @@ type ContentfulTourFieldsEnum =
   | 'tags'
   | 'title'
   | 'updatedAt'
-  | 'video.children'
-  | 'video.children.children'
-  | 'video.children.children.children'
-  | 'video.children.children.id'
-  | 'video.children.id'
-  | 'video.children.internal.content'
-  | 'video.children.internal.contentDigest'
-  | 'video.children.internal.description'
-  | 'video.children.internal.fieldOwners'
-  | 'video.children.internal.ignoreType'
-  | 'video.children.internal.mediaType'
-  | 'video.children.internal.owner'
-  | 'video.children.internal.type'
-  | 'video.children.parent.children'
-  | 'video.children.parent.id'
-  | 'video.contentful_id'
-  | 'video.createdAt'
-  | 'video.description'
-  | 'video.file.contentType'
-  | 'video.file.details.size'
-  | 'video.file.fileName'
-  | 'video.file.url'
-  | 'video.filename'
-  | 'video.filesize'
-  | 'video.gatsbyImage'
-  | 'video.gatsbyImageData'
-  | 'video.height'
-  | 'video.id'
-  | 'video.internal.content'
-  | 'video.internal.contentDigest'
-  | 'video.internal.description'
-  | 'video.internal.fieldOwners'
-  | 'video.internal.ignoreType'
-  | 'video.internal.mediaType'
-  | 'video.internal.owner'
-  | 'video.internal.type'
-  | 'video.mimeType'
-  | 'video.node_locale'
-  | 'video.parent.children'
-  | 'video.parent.children.children'
-  | 'video.parent.children.id'
-  | 'video.parent.id'
-  | 'video.parent.internal.content'
-  | 'video.parent.internal.contentDigest'
-  | 'video.parent.internal.description'
-  | 'video.parent.internal.fieldOwners'
-  | 'video.parent.internal.ignoreType'
-  | 'video.parent.internal.mediaType'
-  | 'video.parent.internal.owner'
-  | 'video.parent.internal.type'
-  | 'video.parent.parent.children'
-  | 'video.parent.parent.id'
-  | 'video.placeholderUrl'
-  | 'video.publicUrl'
-  | 'video.resize.height'
-  | 'video.resize.src'
-  | 'video.resize.width'
-  | 'video.size'
-  | 'video.spaceId'
-  | 'video.sys.revision'
-  | 'video.sys.type'
-  | 'video.title'
-  | 'video.updatedAt'
-  | 'video.url'
-  | 'video.width';
+  | 'video';
 
 type ContentfulTourFilterInput = {
   readonly categories: InputMaybe<StringQueryOperatorInput>;
@@ -3464,7 +3325,7 @@ type ContentfulTourFilterInput = {
   readonly tags: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
   readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
-  readonly video: InputMaybe<ContentfulAssetFilterInput>;
+  readonly video: InputMaybe<StringQueryOperatorInput>;
 };
 
 type ContentfulTourFilterListInput = {
@@ -5773,7 +5634,7 @@ type Query_contentfulTourArgs = {
   tags: InputMaybe<StringQueryOperatorInput>;
   title: InputMaybe<StringQueryOperatorInput>;
   updatedAt: InputMaybe<DateQueryOperatorInput>;
-  video: InputMaybe<ContentfulAssetFilterInput>;
+  video: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -7539,7 +7400,7 @@ type WebPOptions = {
 type AllToursQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AllToursQuery = { readonly allContentfulTour: { readonly nodes: ReadonlyArray<{ readonly slug: string | null, readonly id: string, readonly title: string | null, readonly price: number | null, readonly previousPrice: number | null, readonly rating: number | null, readonly cities: ReadonlyArray<string | null> | null, readonly languages: ReadonlyArray<string | null> | null, readonly tags: ReadonlyArray<string | null> | null, readonly duration: number | null, readonly categories: ReadonlyArray<string | null> | null, readonly description: { readonly raw: string | null } | null, readonly comments: ReadonlyArray<{ readonly author: { readonly name: string | null } | null, readonly comment: { readonly raw: string | null } | null } | null> | null }> } };
+type AllToursQuery = { readonly allContentfulTour: { readonly edges: ReadonlyArray<{ readonly node: { readonly categories: ReadonlyArray<string | null> | null, readonly cities: ReadonlyArray<string | null> | null, readonly duration: number | null, readonly id: string, readonly price: number | null, readonly rating: number | null, readonly slug: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly title: string | null, readonly video: string | null, readonly languages: ReadonlyArray<string | null> | null, readonly previousPrice: number | null, readonly description: { readonly raw: string | null } | null, readonly comments: ReadonlyArray<{ readonly id: string, readonly rating: number | null, readonly comment: { readonly raw: string | null } | null, readonly author: { readonly name: string | null, readonly avatar: { readonly publicUrl: string, readonly gatsbyImageData: Record<string, unknown> | null } | null } | null } | null> | null, readonly image: { readonly publicUrl: string, readonly gatsbyImageData: Record<string, unknown> | null } | null, readonly images: ReadonlyArray<{ readonly publicUrl: string, readonly gatsbyImageData: Record<string, unknown> | null } | null> | null } }> } };
 
 type AllToursCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -7577,7 +7438,7 @@ type TourItemQueryVariables = Exact<{
 }>;
 
 
-type TourItemQuery = { readonly allContentfulTour: { readonly nodes: ReadonlyArray<{ readonly slug: string | null, readonly id: string, readonly title: string | null, readonly price: number | null, readonly previousPrice: number | null, readonly rating: number | null, readonly cities: ReadonlyArray<string | null> | null, readonly languages: ReadonlyArray<string | null> | null, readonly tags: ReadonlyArray<string | null> | null, readonly categories: ReadonlyArray<string | null> | null, readonly duration: number | null, readonly description: { readonly raw: string | null } | null, readonly image: { readonly publicUrl: string, readonly gatsbyImageData: Record<string, unknown> | null } | null, readonly images: ReadonlyArray<{ readonly publicUrl: string, readonly id: string, readonly gatsbyImageData: Record<string, unknown> | null } | null> | null, readonly comments: ReadonlyArray<{ readonly id: string, readonly rating: number | null, readonly comment: { readonly raw: string | null } | null, readonly author: { readonly name: string | null, readonly avatar: { readonly publicUrl: string, readonly gatsbyImageData: Record<string, unknown> | null } | null } | null } | null> | null }> } };
+type TourItemQuery = { readonly allContentfulTour: { readonly edges: ReadonlyArray<{ readonly node: { readonly categories: ReadonlyArray<string | null> | null, readonly cities: ReadonlyArray<string | null> | null, readonly duration: number | null, readonly id: string, readonly price: number | null, readonly rating: number | null, readonly slug: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly title: string | null, readonly video: string | null, readonly languages: ReadonlyArray<string | null> | null, readonly previousPrice: number | null, readonly description: { readonly raw: string | null } | null, readonly comments: ReadonlyArray<{ readonly id: string, readonly rating: number | null, readonly comment: { readonly raw: string | null } | null, readonly author: { readonly name: string | null, readonly avatar: { readonly publicUrl: string, readonly gatsbyImageData: Record<string, unknown> | null } | null } | null } | null> | null, readonly image: { readonly publicUrl: string, readonly gatsbyImageData: Record<string, unknown> | null } | null, readonly images: ReadonlyArray<{ readonly publicUrl: string, readonly gatsbyImageData: Record<string, unknown> | null } | null> | null } }> } };
 
 type AllToursSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 

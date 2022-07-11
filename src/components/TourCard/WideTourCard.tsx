@@ -1,43 +1,36 @@
-import { graphql, Link, useStaticQuery } from 'gatsby';
-import { TourProps } from '@/types';
-import Img from 'gatsby-image';
+/* eslint-disable no-undef */
+import { Link } from 'gatsby';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
-function WideTourCard({ tour }: { tour: TourProps }) {
-  const data = useStaticQuery(
-    graphql`
-      {
-        allFile {
-          nodes {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    `,
+function WideTourCard({
+  tour,
+}: {
+  tour: Queries.TourItemQuery['allContentfulTour']['edges'][0]['node'];
+}) {
+  if (!tour?.description?.raw) return null;
+  const plainTextDescription = documentToPlainTextString(
+    JSON.parse(tour.description.raw),
   );
   return (
     <Link to={`/tours/${tour.slug}`} className="col-span-2 overflow-hidden">
       <div className="flex flex-col gap-4">
-        <Img
-          fluid={data.allFile.nodes[1].childImageSharp.fluid}
+        <img
+          src={tour.image?.publicUrl}
           className="max-h-[400px]  rounded-2xl"
           alt=""
         />
         <div className=" font-poppins">
           <div className="uppercase  text-sky-500 font-semibold">
-            {tour.categories[1]}
+            {tour.categories && tour.categories.map((cat) => cat)}
           </div>
           <div className="text-3xl font-semibold text-gray-800 ">
             {tour.title}
           </div>
           <div className="mt-4">
-            {tour.description.length > 200 ? (
+            {plainTextDescription.length > 200 ? (
               <>
                 <p className="text-gray-500">
-                  {tour.description.substring(0, 150)}...
+                  {plainTextDescription.substring(0, 150)}...
                   <a
                     href={`/Tours/${tour.slug}`}
                     className="text-sky-500 underline"
@@ -51,7 +44,7 @@ function WideTourCard({ tour }: { tour: TourProps }) {
                 ></a>
               </>
             ) : (
-              tour.description
+              plainTextDescription
             )}
           </div>
         </div>

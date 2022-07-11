@@ -7,16 +7,12 @@ import TourCard from '../../components/TourCard/BasicTourCard';
 import WideTourCard from '../../components/TourCard/WideTourCard';
 import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
-import { TourProps } from '@/types';
 
-type DataProps = {
-  allContentfulTour: {
-    nodes: TourProps[];
-  };
-};
-
-function ToursList({ data }: PageProps<DataProps>) {
-  const tours = data.allContentfulTour.nodes;
+// eslint-disable-next-line no-undef
+function ToursList({ data }: PageProps<Queries.AllToursQuery>) {
+  const tours = data.allContentfulTour.edges;
+  console.log(tours[0].node.title);
+  // console.log(node);
   return (
     <>
       <Header />
@@ -35,18 +31,19 @@ function ToursList({ data }: PageProps<DataProps>) {
       <div className="container mx-auto m-10 relative">
         <div className="xl:grid flex flex-col px-8 grid-cols-1 xl:grid-cols-3 gap-8  xl:mx-20 ">
           {tours?.map(
-            (tour, index) => index < 3 && <TourCard tour={tour} key={index} />,
+            (tour, index) =>
+              index < 3 && <TourCard tour={tour.node} key={index} />,
           )}
 
           {tours?.map(
             (tour, index) =>
-              index === 3 && <WideTourCard tour={tour} key={index} />,
+              index === 3 && <WideTourCard tour={tour.node} key={index} />,
           )}
 
           <div className="col-span-2 col-start-2 grid grid-cols-2 gap-8 ">
             {tours?.map(
               (tour, index) =>
-                index > 3 && <MediumTourCard tour={tour} key={index} />,
+                index > 3 && <MediumTourCard tour={tour.node} key={index} />,
             )}
           </div>
           <div className="mt-8 col-span-full w-full flex justify-center font-poppins">
@@ -68,27 +65,44 @@ function ToursList({ data }: PageProps<DataProps>) {
 export const query = graphql`
   query AllTours {
     allContentfulTour {
-      nodes {
-        slug
-        id
-        title
-        description {
-          raw
-        }
-        price
-        previousPrice
-        rating
-        cities
-        languages
-        tags
-        duration
-        categories
-        comments {
-          author {
-            name
-          }
-          comment {
+      edges {
+        node {
+          categories
+          cities
+          duration
+          id
+          price
+          rating
+          slug
+          tags
+          title
+          description {
             raw
+          }
+          video
+          languages
+          previousPrice
+          comments {
+            id
+            rating
+            comment {
+              raw
+            }
+            author {
+              name
+              avatar {
+                publicUrl
+                gatsbyImageData
+              }
+            }
+          }
+          image {
+            publicUrl
+            gatsbyImageData
+          }
+          images {
+            publicUrl
+            gatsbyImageData
           }
         }
       }

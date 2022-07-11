@@ -6,15 +6,15 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 type ImageProps = {
   id: number;
   alt?: string;
-  src: string;
-  size: 'small' | 'large';
+  src: string | undefined;
+  size: string;
   gatsbyImageData?: any;
 };
 
 const PrevImage: React.FC<{
   src: string;
   alt?: string;
-  size: 'small' | 'large';
+  size: string;
   className?: string;
   gatsbyImageData: any;
 }> = ({ src, alt, size, gatsbyImageData }) => {
@@ -133,12 +133,14 @@ const ImagesGallery: React.FC<{ Gallery?: ImageProps[] }> = ({ Gallery }) => {
                     }`}
                     key={gallery.id}
                   >
-                    <PrevImage
-                      size={gallery.size ?? `small`}
-                      alt="gallery"
-                      src={gallery.src}
-                      gatsbyImageData={gallery.gatsbyImageData}
-                    />
+                    {gallery.src && (
+                      <PrevImage
+                        size={gallery.size ?? `small`}
+                        alt="gallery"
+                        src={gallery.src}
+                        gatsbyImageData={gallery.gatsbyImageData}
+                      />
+                    )}
                   </div>
                 </>
               ),
@@ -157,12 +159,14 @@ const ImagesGallery: React.FC<{ Gallery?: ImageProps[] }> = ({ Gallery }) => {
                     }`}
                     key={gallery.id}
                   >
-                    <PrevImage
-                      size={gallery.size ?? `small`}
-                      alt="gallery"
-                      src={gallery.src}
-                      gatsbyImageData={gallery.gatsbyImageData}
-                    />
+                    {gallery.src && (
+                      <PrevImage
+                        size={gallery.size ?? `small`}
+                        alt="gallery"
+                        src={gallery.src}
+                        gatsbyImageData={gallery.gatsbyImageData}
+                      />
+                    )}
                   </div>
                 </>
               ),

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-constant-condition */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
@@ -11,7 +12,6 @@ import {
 } from 'react-icons/md';
 import ImagesGallery from '@/components/ImagesGallery';
 import { graphql, Link, PageProps } from 'gatsby';
-import { TourProps } from '@/types';
 import Tours from '@/data/tours';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
@@ -98,6 +98,8 @@ const options = {
   },
 };
 
+type TourProps = Queries.TourItemQuery['allContentfulTour']['edges'][0]['node'];
+
 const renderRatingStars = (rating: number) => {
   const stars = [];
   if (rating % 1 !== 0) {
@@ -113,11 +115,13 @@ const renderRatingStars = (rating: number) => {
   return stars;
 };
 
-const renderInfoList = (Tour: any) => {
+const renderInfoList = (Tour: TourProps) => {
   const listItems = [
     {
       icon: <MdOutlineAccessTimeFilled className="text-sky-400" />,
-      text: `${Tour.duration} day${Tour.duration > 1 ? `s` : ``}`,
+      text: `${Tour.duration} day${
+        Tour?.duration && Tour.duration > 1 ? `s` : ``
+      }`,
     },
     {
       icon: <BsStarFill className="text-sky-400" />,
@@ -145,21 +149,21 @@ const renderInfoList = (Tour: any) => {
   );
 };
 
-const renderImages = (Tour: any) => {
+const renderImages = (Tour: TourProps) => {
   const images = Tour.images;
-  const TourImageGallery: {
-    id: number;
-    src: string;
-    size: 'small' | 'large';
-    gatsbyImageData: Node;
-  }[] = Array.from({ length: images.length }, (_, index) => {
+  // if the object is null return nothing
+  if (images === null) {
+    return null;
+  }
+  const TourImageGallery = Array.from({ length: images.length }, (_, index) => {
     return {
       id: index,
-      src: images[index].publicUrl,
+      src: images[index]?.publicUrl,
       size: index <= 3 ? `small` : `large`,
-      gatsbyImageData: images[index].gatsbyImageData,
+      gatsbyImageData: images[index]?.gatsbyImageData,
     };
   });
+  if (TourImageGallery[0].src === undefined) return null;
   return (
     <>
       <h1 className="text-gray-900 text-2xl font-semibold  ">Photo Gallery</h1>
@@ -173,32 +177,32 @@ const renderImages = (Tour: any) => {
   );
 };
 
-const renderTourInfoTable = (Tour: any) => {
+const renderTourInfoTable = (Tour: TourProps) => {
   const tableItems = [
     {
       title: `Cities`,
-      value: Tour.cities.map((city, index) => (
-        <span key={index}>
-          {city}
-          {index !== Tour.cities.length - 1 && `, `}
-        </span>
-      )),
+      value: Tour?.cities && Tour.cities.map((city) => city).join(`, `),
     },
     {
       title: `Tour Category`,
-      value: Tour.categories.map((category) => category).join(`, `) || ` - `,
+      value:
+        (Tour.categories &&
+          Tour.categories.map((category) => category).join(`, `)) ||
+        null,
     },
     {
       title: `Tour Tags`,
-      value: Tour.tags.join(`, `),
+      value: Tour.tags && Tour.tags.join(`, `),
     },
     {
       title: `Tour Duration`,
-      value: Tour.duration + ` day${Tour.duration > 1 ? `s` : ``}`,
+      value: Tour.duration
+        ? Tour.duration + ` day${Tour.duration > 1 ? `s` : ``}`
+        : null,
     },
     {
       title: `Tour Rating`,
-      value: (
+      value: Tour.rating && (
         <span className="flex items-center">
           {renderRatingStars(Tour.rating)}
           <span className="text-gray-400 ml-2">{Tour.rating}</span>
@@ -227,26 +231,29 @@ const renderTourInfoTable = (Tour: any) => {
     <div className="bg-gray-50/20 p-4 border rounded-xl flex flex-col items-center">
       <table className="text-left w-full border-collapse">
         <tbody>
-          {tableItems.map((item, index) => (
-            <tr className="hover:bg-gray-50" key={index}>
-              <td
-                className={`py-4 md:px-6  ${
-                  index !== tableItems.length - 1 && `border-b`
-                } border-grey-light`}
-              >
-                {item.title}
-              </td>
-              <td
-                className={`py-4 md:px-6  ${
-                  index !== tableItems.length - 1 && `border-b`
-                } border-grey-light`}
-              >
-                <p className="text-gray-400 font-semibold py-1 px-3 rounded text-sm">
-                  {item.value}
-                </p>
-              </td>
-            </tr>
-          ))}
+          {tableItems.map(
+            (item, index) =>
+              item.value && (
+                <tr className="hover:bg-gray-50" key={index}>
+                  <td
+                    className={`py-4 md:px-6  ${
+                      index !== tableItems.length - 1 && `border-b`
+                    } border-grey-light`}
+                  >
+                    {item.title}
+                  </td>
+                  <td
+                    className={`py-4 md:px-6  ${
+                      index !== tableItems.length - 1 && `border-b`
+                    } border-grey-light`}
+                  >
+                    <p className="text-gray-400 font-semibold py-1 px-3 rounded text-sm">
+                      {item.value}
+                    </p>
+                  </td>
+                </tr>
+              ),
+          )}
         </tbody>
       </table>
     </div>
@@ -343,9 +350,10 @@ const renderAddCommentForm = () => {
   );
 };
 
-const renderTourComments = (Tour: any) => {
-  const comments: any[] = Tour.comments;
+const renderTourComments = (Tour: TourProps) => {
+  const comments = Tour.comments;
   if (!comments) return;
+  if (comments[0]?.author !== null) return;
   return (
     <>
       <h1 className="text-gray-900 text-2xl font-semibold  ">
@@ -358,34 +366,37 @@ const renderTourComments = (Tour: any) => {
       </p>
       <div className="flex flex-col gap-4 my-8">
         {comments.map((comment) => {
-          const OptimizedImage = getImage(comment.author.avatar);
           return (
             <div
               className="flex flex-col items-start border rounded-2xl p-8 grow gap-4"
-              key={comment.id}
+              key={comment?.id}
             >
               <div className="flex items-center   grow gap-2">
                 <div className="w-16 h-16 rounded-2xl overflow-hidden bg-gray-100">
-                  {OptimizedImage && (
-                    <GatsbyImage image={OptimizedImage} alt="author" />
+                  {comment?.author?.avatar && (
+                    <img src={comment.author.avatar?.publicUrl} alt="author" />
                   )}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-gray-800 font-semibold py-1 px-3 ">
-                    {comment.author.name}
-                  </h3>
-                  <h6 className="text-gray-400 flex gap-4  px-3 text-xs ">
-                    <span className="flex">
-                      {renderRatingStars(comment.rating)}
-                      <span className="text-gray-400 ml-2">
-                        {comment.rating}
+                  {comment?.author && (
+                    <h3 className="text-gray-800 font-semibold py-1 px-3 ">
+                      {comment.author.name}
+                    </h3>
+                  )}
+                  {comment?.rating && (
+                    <h6 className="text-gray-400 flex gap-4  px-3 text-xs ">
+                      <span className="flex">
+                        {renderRatingStars(comment?.rating)}
+                        <span className="text-gray-400 ml-2">
+                          {comment?.rating}
+                        </span>
                       </span>
-                    </span>
-                  </h6>
+                    </h6>
+                  )}
                 </div>
               </div>
               <p className="text-sm text-gray-700 mt-2 ml-4 indent-10">
-                {renderRichText(comment.comment, options)}
+                {renderRichText(comment?.comment, options)}
               </p>
             </div>
           );
@@ -396,15 +407,17 @@ const renderTourComments = (Tour: any) => {
   );
 };
 
-const renderTourDescription = (Tour: any) => {
+const renderTourDescription = (Tour: TourProps) => {
   console.log(Tour);
   return (
-    <>
-      <h1 className="text-gray-900 text-2xl font-semibold  ">Overview</h1>
-      <p className="font-light text-sm text-gray-500 mt-3  ">
-        {renderRichText(Tour.description, options)}
-      </p>
-    </>
+    Tour.description && (
+      <>
+        <h1 className="text-gray-900 text-2xl font-semibold  ">Overview</h1>
+        <p className="font-light text-sm text-gray-500 mt-3  ">
+          {renderRichText(Tour.description, options)}
+        </p>
+      </>
+    )
   );
 };
 
@@ -439,17 +452,17 @@ const renderTourBookFrom = () => {
       required: true,
     },
     {
-      label: `Date`,
-      name: `date`,
+      label: `Check-in date`,
+      name: `chekin`,
       type: `date`,
-      placeholder: `Enter date`,
+      placeholder: `Enter the check in date`,
       required: true,
     },
     {
-      label: `Time`,
-      name: `time`,
-      type: `time`,
-      placeholder: `Enter time`,
+      label: `Check-out date`,
+      name: `checkout`,
+      type: `date`,
+      placeholder: `Enter the check out date`,
       required: true,
     },
     {
@@ -512,7 +525,8 @@ const renderTourBookFrom = () => {
   );
 };
 
-const renderTourVideo = (Tour: any) => {
+const renderTourVideo = (Tour: TourProps) => {
+  if (!Tour.video) return;
   return (
     <div className="  h-[400px] border  transform overflow-hidden bg-white  text-left align-middle  transition-all">
       <iframe
@@ -522,18 +536,21 @@ const renderTourVideo = (Tour: any) => {
         width="100%"
         height="100%"
         marginWidth={0}
-        src="https://youtu.be/hVvEISFw9w0"
+        src={`https://www.youtube.com/embed/${
+          Tour?.video.split(`/`)[Tour?.video.split(`/`).length - 1]
+        }`}
       />
     </div>
   );
 };
 
 const renderSimilarTours = (Tour: TourProps) => {
-  // find tours with the same tags and exclude the current tour
-  const similarTours = Tour.tags
+  if (!Tour.tags) return;
+  const similarTours = Tour?.tags
     .map((tag) => {
-      return Tours.filter((tour) => {
-        return tour.tags.includes(tag) && tour.id !== Tour.id;
+      if (!tag) return null;
+      return Tours.filter(({ tags, id }) => {
+        return tags.includes(tag) && id !== parseInt(Tour.id);
       });
     })
     // flatten the array
@@ -542,46 +559,53 @@ const renderSimilarTours = (Tour: TourProps) => {
     .slice(0, 4);
   return (
     <>
-      <h1 className="text-sky-500 text-3xl font-bold uppercase">
-        Similar Tours
-      </h1>
-      <p className="text-sm text-gray-400">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-        consectetur, nisl eget consectetur sagittis, nisl nunc consectetur
-      </p>
-      <div className="mt-9  grid grid-col-1 lg:grid-cols-2  gap-4">
-        {similarTours.map((tour) => (
-          <Link key={tour.id} to={`/Tours/${tour.slug}`}>
-            <div className="cursor-pointer font-poppins ">
-              <div className="h-full rounded-2xl bg-gray-50 border overflow-hidden">
-                <img
-                  width={300}
-                  height={192}
-                  className="h-48 lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
-                  src="/images/Destinations/1.jpg"
-                  alt="blog"
-                />
-                <div className="p-6 ">
-                  <h6 className="tracking-widest text-xs flex justify-start gap-1 flex-wrap  font-medium text-gray-400 mb-2">
-                    {/* Categories */}
-                    {tour.categories.map((category) => (
-                      <span key={category} className="mx-1">
-                        {category}
-                      </span>
-                    ))}
-                  </h6>
-                  <h1 className="  font-semibold text-gray-600 mb-3">
-                    {tour.title}
-                  </h1>
-                  <p className="leading-relaxed mb-3 text-xs">
-                    {tour.description.substring(0, 80)}...
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {similarTours.length > 0 && (
+        <>
+          <h1 className="text-sky-500 text-3xl font-bold uppercase">
+            Similar Tours
+          </h1>
+          <p className="text-sm text-gray-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            consectetur, nisl eget consectetur sagittis, nisl nunc consectetur
+          </p>
+          <div className="mt-9  grid grid-col-1 lg:grid-cols-2  gap-4">
+            {similarTours.map((tour) => {
+              if (!tour) return null;
+              return (
+                <Link key={tour.id} to={`/Tours/${tour.slug}`}>
+                  <div className="cursor-pointer font-poppins ">
+                    <div className="h-full rounded-2xl bg-gray-50 border overflow-hidden">
+                      <img
+                        width={300}
+                        height={192}
+                        className="h-48 lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
+                        src="/images/Destinations/1.jpg"
+                        alt="blog"
+                      />
+                      <div className="p-6 ">
+                        <h6 className="tracking-widest text-xs flex justify-start gap-1 flex-wrap  font-medium text-gray-400 mb-2">
+                          {/* Categories */}
+                          {tour.categories.map((category) => (
+                            <span key={category} className="mx-1">
+                              {category}
+                            </span>
+                          ))}
+                        </h6>
+                        <h1 className="  font-semibold text-gray-600 mb-3">
+                          {tour.title}
+                        </h1>
+                        <p className="leading-relaxed mb-3 text-xs">
+                          {tour.description.substring(0, 80)}...
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </>
+      )}
     </>
   );
 };
@@ -608,28 +632,32 @@ const renderNeedHelp = () => {
   );
 };
 
-function Tour({ data }: PageProps<Queries.TypegenPageQuery>) {
-  const tour = data.allContentfulTour.nodes[0];
+function Tour({ data }: PageProps<Queries.TourItemQuery>) {
+  const tour = data.allContentfulTour.edges[0].node;
   return (
     <>
       <Header />
       <div className="relative font-poppins h-[360px] ">
-        <img
-          src={tour.image.publicUrl}
-          className="absolute inset-0 -z-10 object-cover w-full h-full filter saturate-150 object-center"
-          alt=""
-        />
+        {tour.image?.publicUrl && (
+          <img
+            src={tour.image.publicUrl}
+            className="absolute inset-0 -z-10 object-cover w-full h-full filter saturate-150 object-center"
+            alt=""
+          />
+        )}
         <div className="bg-gradient-to-t  from-black/80 to-transparent  p-8 absolute bottom-0 inset-x-0 ">
           <div className="container mx-auto ">
-            <div>
-              <div className="text-xl flex items-center gap-2 font-semibold text-yellow-400 mb-4">
-                {renderRatingStars(tour.rating)}
-                {` `}
-                <span className="text-lg ml-2">{tour.rating}</span>
-              </div>
-              <div className="text-3xl md:text-4xl uppercase font-bold text-white">
-                {tour.title}
-              </div>
+            {tour.rating && (
+              <>
+                <div className="text-xl flex items-center gap-2 font-semibold text-yellow-400 mb-4">
+                  {renderRatingStars(tour.rating)}
+                  {` `}
+                  <span className="text-lg ml-2">{tour.rating}</span>
+                </div>
+              </>
+            )}
+            <div className="text-3xl md:text-4xl uppercase font-bold text-white">
+              {tour.title}
             </div>
           </div>
         </div>
@@ -658,42 +686,44 @@ function Tour({ data }: PageProps<Queries.TypegenPageQuery>) {
 export const query = graphql`
   query TourItem($slug: String!) {
     allContentfulTour(filter: { slug: { eq: $slug } }) {
-      nodes {
-        slug
-        id
-        title
-        price
-        previousPrice
-        rating
-        cities
-        languages
-        tags
-        description {
-          raw
-        }
-        categories
-        duration
-        image {
-          publicUrl
-          gatsbyImageData(layout: CONSTRAINED)
-        }
-        images {
-          publicUrl
+      edges {
+        node {
+          categories
+          cities
+          duration
           id
-          gatsbyImageData(layout: CONSTRAINED)
-        }
-        comments {
-          id
+          price
           rating
-          comment {
+          slug
+          tags
+          title
+          description {
             raw
           }
-          author {
-            name
-            avatar {
-              publicUrl
-              gatsbyImageData(width: 64, placeholder: BLURRED, formats: WEBP)
+          video
+          languages
+          previousPrice
+          comments {
+            id
+            rating
+            comment {
+              raw
             }
+            author {
+              name
+              avatar {
+                publicUrl
+                gatsbyImageData
+              }
+            }
+          }
+          image {
+            publicUrl
+            gatsbyImageData
+          }
+          images {
+            publicUrl
+            gatsbyImageData
           }
         }
       }

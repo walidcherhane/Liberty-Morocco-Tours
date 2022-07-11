@@ -29,6 +29,7 @@
     ]
   },
   "dependencies": {
+    "@contentful/rich-text-plain-text-renderer": "15.12.1",
     "@contentful/rich-text-types": "15.12.1",
     "@headlessui/react": "1.6.5",
     "ahooks": "3.5.2",
