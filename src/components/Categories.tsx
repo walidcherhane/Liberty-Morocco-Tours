@@ -18,7 +18,7 @@ function Categories() {
   const categories = Array.from(allCategories).map((category) => {
     return {
       category,
-      count: allToursCategories.filter((tour) => tour.includes(category))
+      count: allToursCategories.filter((cats) => cats.includes(category))
         .length,
     };
   });
