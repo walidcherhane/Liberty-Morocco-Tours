@@ -22,33 +22,18 @@ function WideTourCard({
           alt=""
         />
         <div className=" font-poppins">
-          <div className="uppercase  text-sky-500 font-semibold">
+          <h3 className="uppercase  text-sky-500 font-semibold">
             {tour.categories && tour.categories.map((cat) => cat)}
-          </div>
-          <div className="text-3xl font-semibold text-gray-800 ">
+          </h3>
+          <h1 className="text-3xl font-semibold text-gray-800 ">
             {tour.title}
-          </div>
-          <div className="mt-4">
-            {plainTextDescription.length > 250 ? (
-              <>
-                <p className="text-gray-500">
-                  {plainTextDescription.substring(0, 250)}...
-                  <Link
-                    to={`/tours/${tour.slug}`}
-                    className="text-sky-500 underline"
-                  >
-                    Continue Reading ↗
-                  </Link>
-                </p>
-                <a
-                  href=""
-                  className="text-sky-600 inline-flex  items-center underline  underline-offset-1"
-                ></a>
-              </>
-            ) : (
-              plainTextDescription
-            )}
-          </div>
+          </h1>
+          <p className="text-gray-500 mt-4">
+            {plainTextDescription.substring(0, 250)}...
+            <Link to={`/tours/${tour.slug}`} className="text-sky-500 underline">
+              Continue Reading ↗
+            </Link>
+          </p>
         </div>
       </div>
     </Link>

@@ -29,7 +29,10 @@ function Categories() {
       <h1 className="text-xl text-gray-600 font-semibold">All Categories:</h1>
       <ul className="mt-7">
         {sortedCategories.map(({ category, count }, i) => (
-          <li key={i} className="my-4  w-full flex font-semibold text-gray-600">
+          <li
+            key={i}
+            className="my-4 capitalize w-full flex font-semibold text-gray-600"
+          >
             <>
               {i + 1}. {category}:
               <span className="text-gray-400 ml-auto font-light">{count}</span>

@@ -22,17 +22,17 @@ function TourCard1({
         <div className="flex gap-4">
           {tour.categories &&
             tour.categories.slice(0, 2).map((cat) => (
-              <div
+              <span
                 key={cat}
                 className="bg-sky-400 p-2 px-4 text-xs text-white uppercase -skew-x-6	"
               >
                 {cat}
-              </div>
+              </span>
             ))}
         </div>
-        <div className=" font-semibold text-2xl text-white mt-4">
+        <h1 className=" font-semibold text-2xl text-white mt-4">
           {tour.title}
-        </div>
+        </h1>
         {tour.duration && (
           <p className="text-white ">
             {tour.duration}

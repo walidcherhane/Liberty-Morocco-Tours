@@ -24,22 +24,15 @@ function MediumTourCard({
         <div className=" font-poppins">
           <div className="font-semibold text-gray-800 ">{tour.title}</div>
           <div className="mt-4 text-sm">
-            {plainTextDescription.length > 100 ? (
-              <>
-                <p className="text-gray-500">
-                  {plainTextDescription.substring(0, 80)}...
-                  <a href="" className="text-sky-500 underline">
-                    Continue Reading ↗
-                  </a>
-                </p>
-                <a
-                  href=""
-                  className="text-sky-600 inline-flex  items-center underline  underline-offset-1"
-                ></a>
-              </>
-            ) : (
-              plainTextDescription
-            )}
+            <p className="text-gray-500">
+              {plainTextDescription.substring(0, 80)}...
+              <Link
+                to={`/tours/${tour.slug}`}
+                className="text-sky-500 underline"
+              >
+                Continue Reading ↗
+              </Link>
+            </p>
           </div>
         </div>
       </div>
