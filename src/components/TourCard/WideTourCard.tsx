@@ -21,7 +21,7 @@ function WideTourCard({
           className="h-[400px] bg-gray-200  rounded-2xl"
           alt=""
         />
-        <div className=" font-poppins">
+        <article className="font-poppins">
           <h3 className="uppercase  text-sky-500 font-semibold">
             {tour.categories && tour.categories.map((cat) => cat)}
           </h3>
@@ -34,7 +34,7 @@ function WideTourCard({
               Continue Reading ↗
             </Link>
           </p>
-        </div>
+        </article>
       </div>
     </Link>
   );
