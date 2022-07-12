@@ -1,19 +1,21 @@
 /* eslint-disable no-undef */
+import { ToursQuery } from '@/types';
 import { Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
+
 function TourCard1({
   tour,
 }: {
-  tour: Queries.TourItemQuery['allContentfulTour']['edges'][0]['node'];
+  tour: ToursQuery.TourItemQuery['allContentfulTour']['edges'][0]['node'];
 }) {
-  console.log(tour);
   return (
     <Link
       to={`/tours/${tour.slug}`}
-      className="relative cursor-pointer  font-poppins min-h-[400px] rounded-lg overflow-hidden"
+      className="relative cursor-pointer  font-poppins min-h-[400px]  rounded-lg overflow-hidden"
     >
-      <img
-        src={tour.image?.publicUrl}
-        className="absolute inset-0 -z-10 object-cover w-full h-full object-center"
+      <GatsbyImage
+        image={tour.image?.gatsbyImageData}
+        className="absolute inset-0 -z-10 object-cover w-full h-full bg-gray-200 object-center"
         alt=""
       />
       <div className="mt-auto p-8 px-4 absolute bottom-0 inset-x-0 z-10 flex flex-col w-full items-start justify-start bg-gradient-to-t from-gray-800 to-transparent">

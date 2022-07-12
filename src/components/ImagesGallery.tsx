@@ -34,10 +34,16 @@ const PrevImage: React.FC<{
           }}
           className="cursor-pointer  h-full w-full flex group items-center justify-center after:absolute after:inset-0 after:z-10  after:transition  hover:after:bg-gray-800/50 after:pointer-events-none		"
         >
-          {OptimizedImage && (
+          {OptimizedImage ? (
             <GatsbyImage
               image={OptimizedImage}
               alt={alt || ` `}
+              className={`${className} relative preview-image  h-full w-full object-cover `}
+            />
+          ) : (
+            <img
+              src={src}
+              alt=""
               className={`${className} relative preview-image  h-full w-full object-cover `}
             />
           )}

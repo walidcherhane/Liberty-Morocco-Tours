@@ -6,7 +6,6 @@ require(`dotenv`).config({
 });
 
 const config: GatsbyConfig = {
-  graphqlTypegen: true,
   plugins: [
     `gatsby-plugin-postcss`,
     `gatsby-plugin-postcss`,
@@ -31,14 +30,13 @@ const config: GatsbyConfig = {
         forceBase64Format: `png`, // valid formats: png,jpg,webp
         useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
         stripMetadata: true,
-        defaultQuality: 50,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `tours`,
-        path: `${__dirname}/src/data/`,
+        path: `${__dirname}/static/images/`,
       },
     },
     {

@@ -1,11 +1,13 @@
 /* eslint-disable no-undef */
 import { Link } from 'gatsby';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
+import { ToursQuery } from '@/types';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 function WideTourCard({
   tour,
 }: {
-  tour: Queries.TourItemQuery['allContentfulTour']['edges'][0]['node'];
+  tour: ToursQuery.TourItemQuery['allContentfulTour']['edges'][0]['node'];
 }) {
   if (!tour?.description?.raw) return null;
   const plainTextDescription = documentToPlainTextString(
@@ -14,9 +16,9 @@ function WideTourCard({
   return (
     <Link to={`/tours/${tour.slug}`} className="col-span-2 overflow-hidden">
       <div className="flex flex-col gap-4">
-        <img
-          src={tour.image?.publicUrl}
-          className="max-h-[400px]  rounded-2xl"
+        <GatsbyImage
+          image={tour.image?.gatsbyImageData}
+          className="h-[400px] bg-gray-200  rounded-2xl"
           alt=""
         />
         <div className=" font-poppins">
@@ -27,16 +29,16 @@ function WideTourCard({
             {tour.title}
           </div>
           <div className="mt-4">
-            {plainTextDescription.length > 200 ? (
+            {plainTextDescription.length > 250 ? (
               <>
                 <p className="text-gray-500">
-                  {plainTextDescription.substring(0, 150)}...
-                  <a
-                    href={`/Tours/${tour.slug}`}
+                  {plainTextDescription.substring(0, 250)}...
+                  <Link
+                    to={`/tours/${tour.slug}`}
                     className="text-sky-500 underline"
                   >
                     Continue Reading ↗
-                  </a>
+                  </Link>
                 </p>
                 <a
                   href=""

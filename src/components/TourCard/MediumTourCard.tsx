@@ -1,11 +1,13 @@
 /* eslint-disable no-undef */
 import { Link } from 'gatsby';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
+import { ToursQuery } from '@/types';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 function MediumTourCard({
   tour,
 }: {
-  tour: Queries.TourItemQuery['allContentfulTour']['edges'][0]['node'];
+  tour: ToursQuery.TourItemQuery['allContentfulTour']['edges'][0]['node'];
 }) {
   if (!tour?.description?.raw) return null;
   const plainTextDescription = documentToPlainTextString(
@@ -14,9 +16,9 @@ function MediumTourCard({
   return (
     <Link to={`/tours/${tour.slug}`}>
       <div className="flex flex-col gap-4 h-full">
-        <img
-          src={tour.image?.publicUrl}
-          className="max-h-[400px] h-full  rounded-xl object-cover object-center"
+        <GatsbyImage
+          image={tour.image?.gatsbyImageData}
+          className="h-[200px] bg-gray-200  rounded-xl object-cover object-center"
           alt=""
         />
         <div className=" font-poppins">
@@ -25,7 +27,7 @@ function MediumTourCard({
             {plainTextDescription.length > 100 ? (
               <>
                 <p className="text-gray-500">
-                  {plainTextDescription.substring(0, 60)}...
+                  {plainTextDescription.substring(0, 80)}...
                   <a href="" className="text-sky-500 underline">
                     Continue Reading ↗
                   </a>

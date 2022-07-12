@@ -11,13 +11,13 @@ import {
   MdOutlineAccessTimeFilled,
 } from 'react-icons/md';
 import ImagesGallery from '@/components/ImagesGallery';
-import { graphql, Link, PageProps } from 'gatsby';
-import Tours from '@/data/tours';
+import { graphql, Link, PageProps, useStaticQuery } from 'gatsby';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import React, { ReactNode } from 'react';
 import { ToursQuery } from '@/types';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 export declare type NodeData = Record<string, any>;
 
@@ -85,6 +85,11 @@ const options = {
     ),
     [BLOCKS.LIST_ITEM]: (_: Node, children: React.ReactNode) => (
       <li className="my-2 block  ">{children}</li>
+    ),
+    [BLOCKS.QUOTE]: (_: Node, children: React.ReactNode) => (
+      <blockquote className="pl-4 p-4 m-8 ml-2 border-l-4 border-gray-300">
+        {children}
+      </blockquote>
     ),
     [INLINES.HYPERLINK]: (node: Node, children: React.ReactNode) => (
       <a
@@ -551,13 +556,13 @@ const renderTourVideo = (Tour: TourProps) => {
   );
 };
 
-const renderSimilarTours = (Tour: TourProps) => {
+const renderSimilarTours = (Tour: TourProps, Tours: TourProps[]) => {
   if (!Tour.tags) return;
   const similarTours = Tour?.tags
     .map((tag) => {
       if (!tag) return null;
       return Tours.filter(({ tags, id }) => {
-        return tags.includes(tag) && id !== parseInt(Tour.id);
+        return tags.includes(tag) && id !== Tour.id;
       });
     })
     // flatten the array
@@ -578,6 +583,9 @@ const renderSimilarTours = (Tour: TourProps) => {
           <div className="mt-9  grid grid-col-1 lg:grid-cols-2  gap-4">
             {similarTours.map((tour) => {
               if (!tour) return null;
+              const plainTextDescription = documentToPlainTextString(
+                JSON.parse(tour.description.raw),
+              );
               return (
                 <Link key={tour.id} to={`/Tours/${tour.slug}`}>
                   <div className="cursor-pointer font-poppins ">
@@ -602,7 +610,7 @@ const renderSimilarTours = (Tour: TourProps) => {
                           {tour.title}
                         </h1>
                         <p className="leading-relaxed mb-3 text-xs">
-                          {tour.description.substring(0, 80)}...
+                          {plainTextDescription.substring(0, 80)}...
                         </p>
                       </div>
                     </div>
@@ -641,6 +649,7 @@ const renderNeedHelp = () => {
 
 function Tour({ data }: PageProps<ToursQuery.TourItemQuery>) {
   const tour = data.allContentfulTour.edges[0].node;
+
   return (
     <>
       <Header />
@@ -674,14 +683,14 @@ function Tour({ data }: PageProps<ToursQuery.TourItemQuery>) {
           <div className="mt-4">
             <div className="mt-8">{renderTourDescription(tour)}</div>
             <div className="mt-8">{renderInfoList(tour)}</div>
-            <div className="mt-8">{renderImages(tour)}</div>
             <div className="mt-8">{renderTourInfoTable(tour)}</div>
+            <div className="mt-8">{renderImages(tour)}</div>
             <div className="mt-8">{renderTourComments(tour)}</div>
           </div>
           <div className="mt-4">
             <div className="mt-8">{renderTourVideo(tour)}</div>
             <div className="mt-8">{renderTourBookFrom()}</div>
-            <div className="mt-8">{renderSimilarTours(tour)}</div>
+            {/* <div className="mt-8">{renderSimilarTours(tour, tours)}</div> */}
             <div className="mt-8">{renderNeedHelp()}</div>
           </div>
         </div>
