@@ -52,6 +52,7 @@
     "react-dates": "21.8.0",
     "react-dom": "18.2.0",
     "react-icons": "4.4.0",
+    "react-responsive": "9.0.0-beta.10",
     "swiper": "8.3.0",
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "wowjs": "1.1.3"

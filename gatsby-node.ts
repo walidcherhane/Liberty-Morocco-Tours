@@ -14,65 +14,52 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
 
 exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
-    query AllToursSlugs {
+    {
       allContentfulTour {
         nodes {
           slug
+          categories
+          cities
         }
       }
     }
   `);
 
+  const nodes: {
+    slug: string;
+    categories: string[];
+    cities: string[];
+  }[] = data.allContentfulTour.nodes;
+  const allToursCategories = nodes.map(({ categories }) =>
+    categories.map((category) => category.toLowerCase()),
+  );
+  const allCategories = [...new Set(allToursCategories)].flat(999);
+
+  const allToursCities = nodes.map(({ cities }) =>
+    cities.map((city) => city.toLowerCase()),
+  );
+  const allCities = [...new Set(allToursCities)].flat(999);
+
+  allCities.forEach((city) => {
+    actions.createPage({
+      path: `/tours/cities/${city}`,
+      component: path.resolve(`./src/templates/tours_by_city.tsx`),
+      context: { city },
+    });
+  });
+  allCategories.forEach((category) => {
+    actions.createPage({
+      path: `/tours/categories/${category}`,
+      component: path.resolve(`./src/templates/tours_by_categorie.tsx`),
+      context: { category },
+    });
+  });
+
   data.allContentfulTour.nodes.forEach(({ slug }) => {
     actions.createPage({
-      path: `/tours/` + slug,
+      path: `/tours/${slug}`,
       component: path.resolve(`./src/templates/tour-details.tsx`),
       context: { slug },
     });
   });
 };
-
-// export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
-//   ({ actions }) => {
-//     actions.createTypes(`
-//     type allContentfulTour {
-//       nodes: Tour!
-//     }
-
-//     type Tour {
-//        slug: string
-//         id: ID
-//         title: string
-//         price: number
-//         previousPrice: number
-//         rating: number
-//         cities: [String]
-//         languages: [String]
-//         tags: [String]
-//         categories: [String]
-//         duration: number
-//         description: {raw: string}
-//         image: {
-//             publicUrl: string
-//             gatsbyImageData: Record<string, unknown>
-//       }
-//         images: Array<{
-//           publicUrl: string
-//           id: string
-//           gatsbyImageData: Record<string, unknown>
-//       }>
-//         comments: Array<{
-//           id: string
-//           rating: number
-//           comment: {  raw: string }
-//           author: {
-//             name: string
-//             avatar: {
-//               publicUrl: string
-//               gatsbyImageData: Record<string, unknown>
-//           }
-//         }
-//       }>
-//     }
-//   `);
-//   };

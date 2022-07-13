@@ -91,7 +91,7 @@ function FeaturedTours() {
                     <h1 className=" text-lg font-medium text-gray-900 leading-6">
                       {node.title}
                     </h1>
-                    <h2 className="my-4 text-xs font-bold   tracking-widest text-gray-400">
+                    <h2 className="my-4 text-xs font-bold capitalize  tracking-widest text-gray-400">
                       {node.cities.map((c) => c).join(`- `)}
                     </h2>
                     <hr />

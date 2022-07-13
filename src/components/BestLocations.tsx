@@ -82,7 +82,7 @@ function BestLocations() {
                 <div
                   data-wow-delay={`${index * 0.2}s`}
                   data-wow-duration="2s"
-                  className="wow animate__fadeInUp group relative  flex w-3/4 cursor-pointer flex-col  overflow-hidden    font-poppins transition duration-500  sm:w-[320px]   "
+                  className="wow animate__fadeInUp group relative mx-auto  flex w-3/4 cursor-pointer flex-col  overflow-hidden    font-poppins transition duration-500  sm:w-[320px]   "
                 >
                   <img
                     height={170}
@@ -100,7 +100,7 @@ function BestLocations() {
                           <sup className="ml-1 text-sm font-normal ">$</sup>
                         </div>
                       </div>
-                      <div className="text-center text-lg font-semibold text-gray-800">
+                      <div className="text-center text-lg capitalize font-semibold text-gray-800">
                         {node.cities[0]}
                       </div>
                       <div className=" text-center text-xs font-light">

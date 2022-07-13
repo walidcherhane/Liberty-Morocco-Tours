@@ -108,10 +108,10 @@ function WhyUs() {
         }}
       />
 
-      <div className="relative xl:py-32 xl:pt-10 bg-gray-400 after:absolute after:inset-0 after:bg-gray-800/60  ">
+      <div className="relative xl:py-32 xl:pt-10 bg-gray-400 after:absolute after:inset-0 after:bg-gray-800/60 overflow-hidden">
         <img
           alt="Why Us"
-          className="object-cover "
+          className="object-cover absolute inset-0 w-full h-full "
           src="/images/backgrounds/landscape/17.jpg"
         />
         <div className="container font-poppins relative mx-auto z-20 ">

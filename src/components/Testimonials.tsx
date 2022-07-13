@@ -70,9 +70,7 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
                 className="flex cursor-grab flex-col items-center text-center font-poppins "
               >
                 <img
-                  width={96}
-                  height={96}
-                  className="mx-auto  rounded-full object-cover"
+                  className="mx-auto w-24 h-24 rounded-full object-cover"
                   src={`/images/Testimonials/client${index + 1}.jpg`}
                   alt=""
                 />

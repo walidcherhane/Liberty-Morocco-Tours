@@ -16,7 +16,7 @@ const Team: FC<{ classNames?: string }> = ({ classNames = `` }) => {
               <div
                 data-wow-delay={`${index * 0.2}s`}
                 data-wow-duration="2s"
-                className="wow animate__fadeIn group flex h-full flex-col items-center text-center"
+                className="wow animate__fadeIn group flex h-full flex-col items-center justify-center text-center"
                 key={member.id}
               >
                 <div className="relative mb-10  rounded-3xl overflow-hidden  w-full">

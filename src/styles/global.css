@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 /* =================================================================
                     Overriding react-dates Styling 
                 The order of the styles is important 
