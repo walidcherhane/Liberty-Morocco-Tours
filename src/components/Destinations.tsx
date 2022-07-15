@@ -2,18 +2,35 @@ import Title from './Title';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import useScroll from '../Hooks/useWindowSize';
+import { graphql, useStaticQuery } from 'gatsby';
+import { ToursQuery } from '@/types';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 function Distinations() {
   const scroll = useScroll();
-  const distinations = Array.from({ length: 10 }, (_, index) => {
-    return {
-      id: index,
-      title: `Paris`,
-      img: `/images/Destinations/${index + 1}.jpg`,
-      description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-    };
-  });
-
+  const data = useStaticQuery<ToursQuery.TourItemQuery>(graphql`
+    {
+      allContentfulTour {
+        edges {
+          node {
+            cities
+            duration
+            id
+            price
+            rating
+            slug
+            title
+            previousPrice
+            image {
+              publicUrl
+              gatsbyImageData
+            }
+          }
+        }
+      }
+    }
+  `);
+  const distinations = data.allContentfulTour.edges;
   return (
     <>
       <section className="  text-gray-600 mt-20">
@@ -32,7 +49,8 @@ function Distinations() {
               scroll.width > 768 ? (scroll.width > 1024 ? 30 : 20) : 10
             }
             autoplay={{
-              delay: 7000,
+              delay: 2000,
+              disableOnInteraction: false,
             }}
             modules={[Autoplay]}
             slidesPerView={
@@ -44,30 +62,40 @@ function Distinations() {
                   : 3
                 : scroll.width > 640
                 ? 2
-                : 1
+                : 2
             }
           >
-            {distinations.map((distination) => (
-              <SwiperSlide key={distination.id}>
-                <div className="relative mx-auto h-[310px] w-[240px] overflow-hidden rounded-xl">
-                  <div className="absolute inset-0 z-0">
-                    <img
-                      src={distination.img}
-                      className="h-full w-full object-cover object-center"
-                      alt=""
-                    />
-                  </div>
-                  <div className="relative z-10 h-full bg-black/30 text-white">
-                    <div className="flex h-full flex-col items-center justify-center">
-                      <div className="text-3xl font-semibold ">
-                        {distination.title}
+            {distinations.map(({ node }) => {
+              const OptImage = getImage(node.image.gatsbyImageData);
+              return (
+                <SwiperSlide key={node.id}>
+                  <div className="relative mx-auto h-[310px] w-[240px] overflow-hidden rounded-xl">
+                    <div className="absolute inset-0 z-0">
+                      {OptImage ? (
+                        <GatsbyImage
+                          image={OptImage}
+                          className="h-full w-full object-cover object-center"
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          src={node.image.publicUrl}
+                          className="h-full w-full object-cover object-center"
+                          alt=""
+                        />
+                      )}
+                    </div>
+                    <div className="relative z-10 h-full bg-black/30 text-white">
+                      <div className="flex h-full flex-col text-center items-center justify-center">
+                        <p className="mt-2 text-xl  capitalize font-semibold">
+                          {node.cities[0]}
+                        </p>
                       </div>
-                      <p className="mt-2  ">+203 Tours</p>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
       </section>

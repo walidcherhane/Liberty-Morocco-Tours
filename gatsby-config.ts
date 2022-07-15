@@ -35,8 +35,15 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `tours`,
-        path: `${__dirname}/static/images/`,
+        name: `gallery`,
+        path: `${__dirname}/static/images/gallery/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `hero`,
+        path: `${__dirname}/static/images/hero/`,
       },
     },
     {

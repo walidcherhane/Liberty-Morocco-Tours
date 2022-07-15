@@ -112,7 +112,7 @@ function WhyUs() {
         <img
           alt="Why Us"
           className="object-cover absolute inset-0 w-full h-full "
-          src="/images/backgrounds/landscape/17.jpg"
+          src="/images/backgrounds/7.jpg"
         />
         <div className="container font-poppins relative mx-auto z-20 ">
           <div className="flex flex-col items-center justify-center xl:mb-10">

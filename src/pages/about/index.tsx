@@ -1,6 +1,6 @@
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import Team1 from '../../components/Team/Team1';
+import Team1 from '../../components/Team';
 import Swiper1 from '../../components/HeroSwiper/Swiper1';
 import TravelWithUs from '../../components/Content/Content1';
 import Features3 from '../../components/Features/Feature3';

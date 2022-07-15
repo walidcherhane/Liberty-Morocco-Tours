@@ -5,13 +5,12 @@ import Destinations from '../components/Destinations';
 import Gallery from '../components/Gallery';
 import Steps from '../components/Steps';
 import FeaturedTours from '../components/FeaturedTours';
-import Team2 from '../components/Team/Team2';
 import CallToAction from '../components/CallToAction/Cta1';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
 import WhyUs from '../components/WhyUs';
 import BestLocations from '../components/BestLocations';
-import Discount from '../components/Discount';
+import BookWithUs from '../components/BookWithUs';
 import Testimonials from '../components/Testimonials';
 
 import 'animate.css';
@@ -40,8 +39,7 @@ const Home = () => {
       <FeaturedTours />
       <WhyUs />
       <Testimonials />
-      <Team2 />
-      <Discount />
+      <BookWithUs />
       <CallToAction />
       <Footer />
       <BackToTop />

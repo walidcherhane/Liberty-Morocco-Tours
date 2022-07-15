@@ -82,7 +82,12 @@ function Header() {
         <div className="container mx-auto">
           <div className=" mx-8 flex items-center justify-between font-poppins ">
             <Link to="/" className=" flex items-center justify-center gap-2 ">
-              <img width={40} height={40} src="/images/Logo.png" alt="logo" />
+              <img
+                width={40}
+                height={40}
+                src="/images/icons/logo.png"
+                alt="logo"
+              />
               <span className="text-lg font-bold text-gray-500">Toursya</span>
             </Link>
             <div
@@ -165,7 +170,7 @@ function Header() {
                                         <Link
                                           key={subitem.label}
                                           to={subitem.link}
-                                          className="cursor-pointer rounded-md p-2 my-1  font-normal  text-gray-500 hover:bg-gray-50"
+                                          className="cursor-pointer rounded-md p-2 my-1 font-normal  text-gray-500 hover:bg-gray-50"
                                         >
                                           <span className="capitalize">
                                             {subitem.label}

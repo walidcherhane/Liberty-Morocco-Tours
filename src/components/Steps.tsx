@@ -3,17 +3,17 @@ import Title from './Title';
 function Steps() {
   const features = [
     {
-      icon: `https://ui8-fleet-html.herokuapp.com/img/content/work-pic-1.png`,
+      icon: `/images/icons/book.png`,
       title: `Book & relax`,
       description: `We realize ideas from simple to complex, everything becomes easy to use.`,
     },
     {
-      icon: `https://ui8-fleet-html.herokuapp.com/img/content/work-pic-2.png`,
+      icon: `/images/icons/smart_checklist.png`,
       title: `Smart checklist`,
       description: `We realize ideas from simple to complex, everything becomes easy to use.`,
     },
     {
-      icon: `https://ui8-fleet-html.herokuapp.com/img/content/work-pic-3.png`,
+      icon: `/images/icons/save_money.png`,
       title: `Save more`,
       description: `We realize ideas from simple to complex, everything becomes easy to use.`,
     },

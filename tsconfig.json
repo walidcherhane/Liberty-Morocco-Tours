@@ -13,9 +13,14 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/static/*": ["./static/*"]
-    },
-    "include": ["./src/**/*"]
+    }
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*", "./gatsby-node.ts", "./gatsby-config.ts", "./plugins/**/*", "./src/"]
+  "include": [
+    "./src/**/*",
+    "./gatsby-node.ts",
+    "./gatsby-config.ts",
+    "./plugins/**/*",
+    "./src/"
+  ]
 }

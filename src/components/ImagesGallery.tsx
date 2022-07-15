@@ -2,29 +2,15 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import { AiOutlineEye, AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GalleryImageProps } from '@/types';
 
-type ImageProps = {
-  id: number;
-  alt?: string;
-  src: string | undefined;
-  size: string;
-  gatsbyImageData?: any;
-};
-
-const PrevImage: React.FC<{
-  src: string;
-  alt?: string;
-  size: string;
-  className?: string;
-  gatsbyImageData: any;
-}> = ({ src, alt, size, gatsbyImageData }) => {
-  const className = `${size}-image`;
+const PrevImage = ({ alt, src, gatsbyImageData }: GalleryImageProps) => {
   const [isZoomed, setIsZoomed] = React.useState(false);
-  const OptimizedImage = getImage(gatsbyImageData);
+  const OptimizedImage = gatsbyImageData && getImage(gatsbyImageData);
   const handleZoom = () => {
     setIsZoomed(!isZoomed);
   };
-
+  const className = `h-full w-full object-cover`;
   return (
     <AnimatePresence>
       <div className="relative  h-full w-full">
@@ -37,15 +23,11 @@ const PrevImage: React.FC<{
           {OptimizedImage ? (
             <GatsbyImage
               image={OptimizedImage}
-              alt={alt || ` `}
-              className={`${className} relative preview-image  h-full w-full object-cover `}
+              className={className}
+              alt={alt}
             />
           ) : (
-            <img
-              src={src}
-              alt=""
-              className={`${className} relative preview-image  h-full w-full object-cover `}
-            />
+            src && <img src={src} className={className} alt={alt} />
           )}
           <div className="absolute  text-white text-2xl opacity-0 group-hover:opacity-100 transition z-20   ">
             <AiOutlineEye />
@@ -75,7 +57,7 @@ const PrevImage: React.FC<{
                   maxWidth: `100vw`,
                   maxHeight: `100vh`,
                 }}
-                className={`${className} w-full h-full object-cover object-center z-10 `}
+                className={`w-full h-full object-cover object-center z-10 `}
               />
             </div>
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0    ">
@@ -90,63 +72,32 @@ const PrevImage: React.FC<{
   );
 };
 
-const ImagesGallery: React.FC<{ Gallery?: ImageProps[] }> = ({ Gallery }) => {
-  Gallery = Gallery || [
-    {
-      id: 1,
-      src: `/images/Gallery/1.jpg`,
-      size: `small`,
-    },
-    {
-      id: 2,
-      src: `/images/Gallery/2.jpg`,
-      size: `small`,
-    },
-    {
-      id: 3,
-      src: `/images/Gallery/3.jpg`,
-      size: `large`,
-    },
-    {
-      id: 4,
-      src: `/images/Gallery/4.jpg`,
-      size: `large`,
-    },
-    {
-      id: 5,
-      src: `/images/Gallery/5.jpg`,
-      size: `small`,
-    },
-    {
-      id: 6,
-      src: `/images/Gallery/6.jpg`,
-      size: `small`,
-    },
-  ];
+const ImagesGallery: React.FC<{ Gallery: GalleryImageProps[] }> = ({
+  Gallery,
+}) => {
   return (
     <>
-      <div className="-m-1 flex   md:-m-F2 ">
+      <div className="flex">
         <div className="flex w-1/2 flex-wrap">
           {Gallery.map(
             (gallery, index) =>
               gallery.id > 3 && (
                 <>
                   <div
-                    data-wow-delay={`${index * 0.2}s`}
+                    data-wow-delay={`${index * 0.1}s`}
                     data-wow-duration="2s"
                     className={`wow animate__fadeInUp overflow-hidden p-1 md:p-2 ${
                       gallery.size === `small` ? `w-1/2 ` : `w-full `
                     }`}
                     key={gallery.id}
                   >
-                    {gallery.src && (
-                      <PrevImage
-                        size={gallery.size ?? `small`}
-                        alt="gallery"
-                        src={gallery.src}
-                        gatsbyImageData={gallery.gatsbyImageData}
-                      />
-                    )}
+                    <PrevImage
+                      id={index}
+                      size={gallery.size}
+                      alt="gallery"
+                      gatsbyImageData={gallery.gatsbyImageData}
+                      src={gallery.src}
+                    />
                   </div>
                 </>
               ),
@@ -158,21 +109,20 @@ const ImagesGallery: React.FC<{ Gallery?: ImageProps[] }> = ({ Gallery }) => {
               gallery.id <= 3 && (
                 <>
                   <div
-                    data-wow-delay={`${index * 0.2}s`}
+                    data-wow-delay={`${index * 0.1}s`}
                     data-wow-duration="2s"
                     className={`wow animate__fadeInUp p-1 md:p-2 ${
                       gallery.size === `small` ? `w-1/2` : `w-full`
                     }`}
                     key={gallery.id}
                   >
-                    {gallery.src && (
-                      <PrevImage
-                        size={gallery.size ?? `small`}
-                        alt="gallery"
-                        src={gallery.src}
-                        gatsbyImageData={gallery.gatsbyImageData}
-                      />
-                    )}
+                    <PrevImage
+                      id={index}
+                      size={gallery.size}
+                      alt="gallery"
+                      gatsbyImageData={gallery.gatsbyImageData}
+                      src={gallery.src}
+                    />
                   </div>
                 </>
               ),

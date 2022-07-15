@@ -1,6 +1,6 @@
 const contactInfo = {
   basic: {
-    email: `hello@contact.com`,
+    email: `wcherhane17@gmail.com`,
     phone: `+44 207 112 82 85`,
     whatsApp: `+44 207 112 82 85`,
   },

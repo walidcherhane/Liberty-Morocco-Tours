@@ -16,7 +16,7 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import React, { ReactNode } from 'react';
-import { ToursQuery } from '@/types';
+import { GalleryImageProps, ToursQuery } from '@/types';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 export declare type NodeData = Record<string, any>;
@@ -158,19 +158,19 @@ const renderInfoList = (Tour: TourProps) => {
 
 const renderImages = (Tour: TourProps) => {
   const images = Tour.images;
-  // if the object is null return nothing
-  if (images === null) {
-    return null;
-  }
-  const TourImageGallery = Array.from({ length: images.length }, (_, index) => {
-    return {
-      id: index,
-      src: images[index]?.publicUrl,
-      size: index <= 3 ? `small` : `large`,
-      gatsbyImageData: images[index]?.gatsbyImageData,
-    };
-  });
-  if (TourImageGallery[0].src === undefined) return null;
+  const TourImageGallery: GalleryImageProps[] = Array.from(
+    { length: images.length },
+    (_, index) => {
+      return {
+        id: index,
+        src: images[index]?.publicUrl,
+        alt: `Image ${index + 1}`,
+        size: index <= 3 ? `small` : `large`,
+        gatsbyImageData: images[index]?.gatsbyImageData,
+      };
+    },
+  );
+  console.log(TourImageGallery);
   return (
     <>
       <h1 className="text-gray-900 text-2xl font-semibold  ">Photo Gallery</h1>
@@ -649,12 +649,18 @@ const renderNeedHelp = () => {
 
 function Tour({ data }: PageProps<ToursQuery.TourItemQuery>) {
   const tour = data.allContentfulTour.edges[0].node;
-
+  const OptimizedTourImage = tour.image.gatsbyImageData;
   return (
     <>
       <Header />
       <div className="relative font-poppins h-[360px] ">
-        {tour.image?.publicUrl && (
+        {OptimizedTourImage ? (
+          <GatsbyImage
+            image={OptimizedTourImage}
+            className="absolute inset-0 -z-10 object-cover w-full h-full filter saturate-150 object-center"
+            alt=""
+          />
+        ) : (
           <img
             src={tour.image.publicUrl}
             className="absolute inset-0 -z-10 object-cover w-full h-full filter saturate-150 object-center"

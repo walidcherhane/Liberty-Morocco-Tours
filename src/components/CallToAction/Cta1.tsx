@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import { BsArrowRightShort } from 'react-icons/bs';
 function Cta1() {
   return (
@@ -6,7 +7,7 @@ function Cta1() {
         <div className="container   overflow-hidden mx-auto px-10 md:px-20 py-24 rounded-1xl ">
           <div className="absolute w-full h-full inset-0 z-0 opacity-40">
             <img
-              src="/images/Textures/1.png"
+              src="/images/textures/2.png"
               className="w-full h-full object-cover object-center"
               alt=""
             />
@@ -27,7 +28,8 @@ function Cta1() {
               illo cum incidunt quaerat corrupti. Inventore consectetur quia
               aspernatur perferendis esse. Maiores.
             </p>
-            <button
+            <Link
+              to="/contact/contact1"
               data-delay="2s"
               className="wow animate__fadeInDown group bg-white rounded-lg hover:shadow-2xl shadow-blue-900   transition duration-500  hover:scale-110 text-gray-900 text-center py-3 px-6 font-semibold mt-8 flex justify-center items-center gap-2"
             >
@@ -35,7 +37,7 @@ function Cta1() {
               <div className=" text-2xl font-bold group-hover:translate-x-2 transition duration-500">
                 <BsArrowRightShort />
               </div>
-            </button>
+            </Link>
           </div>
         </div>
       </section>

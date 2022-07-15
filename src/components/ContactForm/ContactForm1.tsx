@@ -1,24 +1,26 @@
 import { FaPhoneAlt } from 'react-icons/fa';
 import { HiLocationMarker } from 'react-icons/hi';
 import { MdAccessTimeFilled } from 'react-icons/md';
-import { Checkbox } from 'primereact/checkbox';
 import InputRenderer from './InputRenderer';
 import { InputProps } from '@/types';
 import contactInfo from '@/data/contact';
 import BgGlassmorphism from '../BgGlassmorphism';
-const renderForm = () => {
+import { useState } from 'react';
+const Form = () => {
   const formInputs: InputProps[] = [
     {
       label: `Name`,
       name: `name`,
       placeholder: `Enter your name`,
       type: `text`,
+      required: true,
     },
     {
       label: `Email`,
       name: `email`,
       placeholder: `Enter your email`,
       type: `email`,
+      required: true,
     },
     {
       label: `Phone`,
@@ -37,11 +39,19 @@ const renderForm = () => {
       name: `message`,
       placeholder: `Enter your message`,
       type: `textarea`,
+      required: true,
     },
   ];
-
+  const [isDisabled, setIsDisabled] = useState(false);
   return (
-    <form action="" className="font-poppins">
+    <form
+      action={`https://formsubmit.co/${contactInfo.basic.email}`}
+      className="font-poppins"
+      method="POST"
+      onSubmit={() => {
+        setIsDisabled(true);
+      }}
+    >
       <h1 className=" text-2xl font-bold text-sky-400">Fill the bellow form</h1>
       <p className="mt-3 w-4/5 text-sm text-gray-400">
         We are here to answer any questions you may have about our travel
@@ -64,17 +74,21 @@ const renderForm = () => {
             />
           </div>
         ))}
+        <input type="hidden" name="_template" value="table" />
+        <input
+          type="hidden"
+          name="_next"
+          value={`${window.location.protocol}//${window.location.host}/Thankyou`}
+        />
+        <input type="hidden" name="_captcha" value="false" />
+
         <div className="col-span-full flex flex-col gap-9">
-          <div>
-            <Checkbox inputId="terms" />
-            <label className="ml-2 font-poppins" htmlFor="terms">
-              Agree to terms and conditions
-            </label>
-          </div>
+          <div className="text-xs ">(*) Required Fields</div>
           <input
+            disabled={isDisabled}
             type="submit"
-            value="Send Message"
-            className="cursor-pointer rounded-full bg-sky-300 px-8 py-4 font-poppins font-semibold text-white  hover:bg-sky-400"
+            value={isDisabled ? `Sending...` : `Send Message`}
+            className="cursor-pointer rounded-full disabled:bg-sky-100 disabled:cursor-not-allowed bg-sky-300 px-8 py-4 font-poppins font-semibold text-white  hover:bg-sky-400"
           />
         </div>
       </div>
@@ -129,7 +143,9 @@ function ContactForm1() {
         <div className="flex md:col-span-full lg:col-span-1 flex-wrap md:flex-nowrap  lg:w-5/6 gap-3 font-poppins lg:flex-col">
           {renderSideMenu()}
         </div>
-        <div className="col-span-2 ">{renderForm()}</div>
+        <div className="col-span-2 ">
+          <Form />
+        </div>
       </div>
     </div>
   );

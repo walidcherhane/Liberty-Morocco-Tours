@@ -13,43 +13,18 @@ function BestLocations() {
       allContentfulTour {
         edges {
           node {
-            categories
             cities
             duration
             id
             price
             rating
             slug
-            tags
-            title
+            categories
             description {
               raw
             }
-            video
-            languages
             previousPrice
-            comments {
-              id
-              rating
-              comment {
-                raw
-              }
-              author {
-                ... on ContentfulClient {
-                  id
-                  name
-                  avatar {
-                    publicUrl
-                    gatsbyImageData
-                  }
-                }
-              }
-            }
             image {
-              publicUrl
-              gatsbyImageData
-            }
-            images {
               publicUrl
               gatsbyImageData
             }
@@ -88,7 +63,7 @@ function BestLocations() {
                     height={170}
                     width={170}
                     className="h-[170px] bg-gray-300 w-full object-cover object-center "
-                    src={node.images[index].publicUrl}
+                    src={node.image.publicUrl}
                     alt="blog"
                   />
                   <div className="inset-x-0 bottom-0 z-10 flex  grow flex-col items-center gap-y-1 bg-white">
@@ -116,7 +91,11 @@ function BestLocations() {
                       </div>
                       <div className=" flex items-center justify-center gap-2 text-xs text-blue-500">
                         <BsClock />
-                        <span className="text-gray-600">{node.duration}</span>
+                        <span className="text-gray-600">
+                          {`${node.duration} day${
+                            node.duration > 1 ? `s` : ``
+                          }`}
+                        </span>
                       </div>
                       <div className=" flex items-center justify-center gap-2 text-xs text-blue-500">
                         <BsStar />

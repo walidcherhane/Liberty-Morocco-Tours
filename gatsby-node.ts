@@ -11,9 +11,21 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
     },
   });
 };
-
-exports.createPages = async ({ graphql, actions }) => {
-  const { data } = await graphql(`
+type GraphQLResult = {
+  allContentfulTour: {
+    nodes: {
+      slug: string;
+      categories: string[];
+      cities: string[];
+    }[];
+  };
+};
+export const createPages: GatsbyNode['createPages'] = async ({
+  graphql,
+  actions,
+  reporter,
+}) => {
+  const QueryResult = await graphql<GraphQLResult>(`
     {
       allContentfulTour {
         nodes {
@@ -24,18 +36,25 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
+  if (QueryResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your Contentful tours`,
+      QueryResult.errors,
+    );
+    return;
+  }
 
-  const nodes: {
-    slug: string;
-    categories: string[];
-    cities: string[];
-  }[] = data.allContentfulTour.nodes;
-  const allToursCategories = nodes.map(({ categories }) =>
+  if (!QueryResult.data) {
+    throw new Error(`Failed to get posts.`);
+  }
+
+  const nodes = QueryResult.data.allContentfulTour.nodes;
+  const allToursCategories = nodes?.map(({ categories }) =>
     categories.map((category) => category.toLowerCase()),
   );
   const allCategories = [...new Set(allToursCategories)].flat(999);
 
-  const allToursCities = nodes.map(({ cities }) =>
+  const allToursCities = nodes?.map(({ cities }) =>
     cities.map((city) => city.toLowerCase()),
   );
   const allCities = [...new Set(allToursCities)].flat(999);
@@ -55,7 +74,7 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  data.allContentfulTour.nodes.forEach(({ slug }) => {
+  nodes?.forEach(({ slug }) => {
     actions.createPage({
       path: `/tours/${slug}`,
       component: path.resolve(`./src/templates/tour-details.tsx`),

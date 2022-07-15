@@ -11,36 +11,16 @@ export interface InputProps {
   className?: string;
   ref?: React.Ref<any>;
   value?: string;
+  required?: boolean;
 }
-export interface TourProps {
+
+type GalleryImageProps = {
   id: number;
-  title: string;
-  description: string;
-  slug: string;
-  price: string;
-  previousPrice: string;
-  image: string;
-  video: string;
-  cities: string[];
-  languages: string[];
-  tags: string[];
-  duration: string;
-  comments: {
-    id: number;
-    Author: {
-      name: string;
-      avatar: string;
-      from: string;
-    };
-    comment: string;
-    date: string;
-    rating: number;
-  }[];
-  images: string[];
-  rating: number;
-  reviews: number;
-  categories: string[];
-}
+  size: `small` | `large`;
+  alt: string;
+  src: string;
+  gatsbyImageData?: any;
+};
 
 declare namespace ToursQuery {
   type gatsbyImageData = {

@@ -1,5 +1,5 @@
 import { ToursQuery } from '@/types';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { AiFillStar } from 'react-icons/ai';
 
@@ -9,43 +9,15 @@ function FeaturedTours() {
       allContentfulTour {
         edges {
           node {
-            categories
             cities
             duration
             id
             price
             rating
             slug
-            tags
             title
-            description {
-              raw
-            }
-            video
-            languages
             previousPrice
-            comments {
-              id
-              rating
-              comment {
-                raw
-              }
-              author {
-                ... on ContentfulClient {
-                  id
-                  name
-                  avatar {
-                    publicUrl
-                    gatsbyImageData
-                  }
-                }
-              }
-            }
             image {
-              publicUrl
-              gatsbyImageData
-            }
-            images {
               publicUrl
               gatsbyImageData
             }
@@ -72,7 +44,8 @@ function FeaturedTours() {
           </div>
           <div className="mt-10 grid justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4   ">
             {tours.map(({ node }, index) => (
-              <div
+              <Link
+                to={`/tours/${node.slug}`}
                 data-wow-delay={`${index * 0.2}s`}
                 data-wow-duration="2s"
                 className="wow  animate__fadeInUp group relative  h-[400px] w-3/4 cursor-pointer  overflow-hidden rounded-2xl border  border-gray-300 p-4 font-poppins transition duration-500 hover:-translate-y-6 hover:shadow-2xl  hover:shadow-gray-300/50 sm:w-full   "
@@ -84,7 +57,7 @@ function FeaturedTours() {
                 <div className="h-full  ">
                   <img
                     className="absolute inset-0 z-0 h-full w-full object-cover object-center transition duration-700 group-hover:scale-125 "
-                    src={node.images[index].publicUrl}
+                    src={node.image.publicUrl}
                     alt="blog"
                   />
                   <div className="absolute inset-x-0 bottom-0 z-10 rounded-t-2xl bg-white p-6 ">
@@ -108,7 +81,7 @@ function FeaturedTours() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

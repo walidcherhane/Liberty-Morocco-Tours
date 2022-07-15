@@ -1,5 +1,39 @@
+import { GalleryImageProps } from '@/types';
+import { graphql, useStaticQuery } from 'gatsby';
 import ImagesGallery from './ImagesGallery';
 const Gallery = () => {
+  const { galleryImg } = useStaticQuery(graphql`
+    {
+      galleryImg: allFile(filter: { sourceInstanceName: { eq: "gallery" } }) {
+        edges {
+          node {
+            publicURL
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const TourImageGallery: GalleryImageProps[] = Array.from(
+    { length: galleryImg.edges.length },
+    (_, index) => {
+      return {
+        id: index + 1,
+        alt: `gallery`,
+        size:
+          // first and last image are large others are small ones
+          index === 0 || index === galleryImg.edges.length - 1
+            ? `large`
+            : `small`,
+        src: galleryImg.edges[index].node.publicURL,
+        gatsbyImageData: galleryImg.edges[index].node.childImageSharp,
+      };
+    },
+  );
+
   return (
     <>
       <section className="py-24 text-gray-600">
@@ -14,7 +48,7 @@ const Gallery = () => {
               haven&apos;t heard of them man bun deep jianbing selfies heirloom.
             </p>
           </div>
-          <ImagesGallery />
+          <ImagesGallery Gallery={TourImageGallery} />
         </div>
       </section>
     </>

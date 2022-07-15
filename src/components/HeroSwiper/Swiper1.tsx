@@ -12,6 +12,7 @@ const SwiperEl = ({
   children,
   isActive,
 }: {
+  // NO NOT CHANGE THE TYPE OF CHILDREN
   children: any;
   isActive: boolean;
 }) => {
@@ -65,7 +66,7 @@ function HeroSwiper({ Slides }: { Slides: SwiperProps[] }) {
                     <>
                       <div className=" relative z-0 bg-gray-800 text-center text-white saturate-150 filter  after:absolute after:inset-0 after:z-10 after:bg-gray-800/40  ">
                         <img
-                          src={`/images/backgrounds/landscape/${index + 1}.jpg`}
+                          src={`/images/backgrounds/${index + 1}.jpg`}
                           className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[10s] ${
                             isActive
                               ? ` ${randomItem([

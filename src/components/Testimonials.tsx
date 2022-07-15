@@ -43,10 +43,10 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
       <div className="relative mx-auto max-w-2xl md:mb-16">
         <div className={`relative mt-12 lg:mt-16`}>
           <div className="  absolute right-full -top-20 -mr-20 w-16  opacity-40 lg:top-32 lg:mr-3 ">
-            <img width={65} height={65} src="/images/quote.png" alt="" />
+            <img width={65} height={65} src="/images/icons/quote.png" alt="" />
           </div>
           <div className="  absolute left-full top-20 -ml-20  w-16 opacity-40 lg:top-32 lg:ml-3 ">
-            <img width={65} height={65} src="/images/quote.png" alt="" />
+            <img width={65} height={65} src="/images/icons/quote.png" alt="" />
           </div>
 
           <Swiper
@@ -71,7 +71,7 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
               >
                 <img
                   className="mx-auto w-24 h-24 rounded-full object-cover"
-                  src={`/images/Testimonials/client${index + 1}.jpg`}
+                  src={`/images/clients/client${index + 1}.jpg`}
                   alt=""
                 />
                 <span className="mt-10 block w-4/5 text-lg sm:w-2/3  sm:text-2xl lg:w-4/5 lg:text-lg xl:w-5/6">
@@ -86,8 +86,7 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
                 </div>
               </SwiperSlide>
             ))}
-
-            <div className="swiper-bullets "></div>
+            <div className="swiper-bullets " />
           </Swiper>
         </div>
       </div>
