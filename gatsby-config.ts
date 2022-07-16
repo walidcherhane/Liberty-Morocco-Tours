@@ -36,7 +36,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `gallery`,
-        path: path.resolve(__dirname, `src/images/gallery`),
+        path: path.resolve(__dirname, `static/images/gallery`),
         ignore: [`**/.*`], // ignore files starting with a dot
       },
     },
@@ -44,7 +44,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `hero`,
-        path: path.resolve(__dirname, `src/images/hero`),
+        path: path.resolve(__dirname, `static/images/hero`),
         ignore: [`**/.*`], // ignore files starting with a dot
       },
     },
