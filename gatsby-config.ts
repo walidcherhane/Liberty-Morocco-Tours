@@ -37,6 +37,7 @@ const config: GatsbyConfig = {
       options: {
         name: `gallery`,
         path: `${__dirname}/static/images/gallery/`,
+        ignore: [`**/.*`], // ignore files starting with a dot
       },
     },
     {
@@ -44,6 +45,7 @@ const config: GatsbyConfig = {
       options: {
         name: `hero`,
         path: `${__dirname}/static/images/hero/`,
+        ignore: [`**/.*`], // ignore files starting with a dot
       },
     },
     {
