@@ -37,7 +37,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `gallery`,
-        path: `/static/images/gallery`,
+        path: `./static/images/gallery`,
         ignore: [`**/.*`],
       },
     },
