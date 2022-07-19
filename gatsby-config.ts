@@ -1,6 +1,5 @@
 /* eslint-disable n/no-path-concat */
 import type { GatsbyConfig } from 'gatsby';
-import path from 'path';
 
 require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -37,7 +36,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `gallery`,
-        path: `./static/images/gallery`,
+        path: `${__dirname}/static/images/gallery`,
         ignore: [`**/.*`],
       },
     },
@@ -45,8 +44,8 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `hero`,
-        path: `./static/images/hero`,
-        ignore: [`**/.*`], // ignore files starting with a dot
+        path: `${__dirname}/static/images/hero`,
+        ignore: [`**/.*`],
       },
     },
     {
