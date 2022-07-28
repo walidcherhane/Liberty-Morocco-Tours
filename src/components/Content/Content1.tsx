@@ -27,19 +27,19 @@ function TravelWithUs() {
           {/* ------------------- */}
           <div className="relative mt-8 flex h-auto -space-x-32 lg:w-1/2">
             <img
-              src="/images/backgrounds/landscape/2.jpg"
+              src="/images/backgrounds/2.jpg"
               className="h w-full rounded-2xl object-cover object-center lg:mt-20 lg:h-80 lg:w-[500px]"
               alt=""
             />
             <div className="absolute top-10 left-10 z-0">
               <img
-                src="/images/Textures/7.svg"
+                src="/images/textures/6.svg"
                 className="w-full h-full object-cover"
                 alt=""
               />
             </div>
             <img
-              src="/images/backgrounds/portrait/3.jpg"
+              src="/images/backgrounds/3.jpg"
               className="mb-20 ml-auto hidden h-60 w-60 rounded-2xl object-cover  object-center lg:block"
               alt=""
             />

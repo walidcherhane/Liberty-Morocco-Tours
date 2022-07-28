@@ -26,7 +26,7 @@ function Features2() {
     <>
       <div className="container relative mx-auto rounded-2xl bg p-8 font-poppins overflow-hidden mb-20 ">
         <img
-          src="/images/Textures/6.jpg"
+          src="/images/textures/4.jpg"
           className="absolute inset-0 -z-10 h-full w-full object-cover "
           alt=""
         />
