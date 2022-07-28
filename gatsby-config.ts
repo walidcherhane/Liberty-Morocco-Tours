@@ -37,7 +37,6 @@ const config: GatsbyConfig = {
       options: {
         name: `gallery`,
         path: `${__dirname}/src/images/gallery`,
-        ignore: [`**/.*`],
       },
     },
     {
@@ -45,7 +44,6 @@ const config: GatsbyConfig = {
       options: {
         name: `hero`,
         path: `${__dirname}/src/images/hero`,
-        ignore: [`**/.*`],
       },
     },
     {
