@@ -136,10 +136,11 @@ const Footer: React.FC = () => {
       <div className="container mx-auto grid grid-cols-2 gap-y-10 gap-x-5 sm:gap-x-8 md:grid-cols-4 lg:grid-cols-5 lg:gap-x-10 relative z-10 ">
         <div className="col-span-2 grid grid-cols-4 gap-5 md:col-span-4 lg:flex lg:flex-col lg:md:col-span-1">
           <div className="col-span-2 ml-8 md:ml-0 flex h-auto  items-center justify-center md:justify-start gap-2 md:col-span-1">
-            <img
+            <StaticImage
               width={50}
+              placeholder={`blurred`}
               height={50}
-              src="/images/icons/logo.png"
+              src="../images/icons/logo.png"
               alt="logo"
             />
 

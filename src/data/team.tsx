@@ -10,7 +10,7 @@ const team = [
     name: `John Doe`,
     description: `DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.`,
     position: `CEO`,
-    img: `/images/Team/1.png`,
+    img: `../images/team/1.png`,
     social: [
       {
         id: 1,
@@ -34,7 +34,7 @@ const team = [
     name: `John Doe`,
     description: `DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.`,
     position: `CEO`,
-    img: `/images/Team/2.png`,
+    img: `../images/team/2.png`,
     social: [
       {
         id: 1,
@@ -58,7 +58,7 @@ const team = [
     name: `John Doe`,
     description: `DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.`,
     position: `CEO`,
-    img: `/images/Team/3.png`,
+    img: `../images/team/3.png`,
     social: [
       {
         id: 1,
@@ -82,7 +82,7 @@ const team = [
     name: `John Doe`,
     description: `DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.`,
     position: `CEO`,
-    img: `/images/Team/4.png`,
+    img: `../images/team/4.png`,
     social: [
       {
         id: 1,
