@@ -136,7 +136,7 @@ function Header() {
                     {item.hasSubmenu ? (
                       <>
                         {isDesktopOrLaptop ? (
-                          <div className="top-14  border-l-2  right-0 mt-1   flex w-fit min-w-[200px] flex-col items-center lg:rounded-lg lg:border-gray-100 sm:bg-white   p-4  transition  duration-200 ease-in-out group-hover:visible group-hover:translate-y-0  group-hover:opacity-100   sm:invisible sm:absolute sm:translate-y-4 sm:border sm:opacity-0 sm:shadow-xl sm:shadow-[#0000000d] ">
+                          <div className="top-14  border-l-2 max-h-96 overflow-y-auto custom-sc right-0 mt-1   flex w-fit min-w-[200px] flex-col items-center lg:rounded-lg lg:border-gray-100 sm:bg-white   p-4  transition  duration-200 ease-in-out group-hover:visible group-hover:translate-y-0  group-hover:opacity-100   sm:invisible sm:absolute sm:translate-y-4 sm:border sm:opacity-0 sm:shadow-xl sm:shadow-[#0000000d] ">
                             <div className="flex w-full  flex-col justify-center">
                               {item.submenu?.map((subitem) => {
                                 return (
@@ -163,7 +163,7 @@ function Header() {
                                 transition={{ duration: 0.8 }}
                                 className="flex items-center justify-between overflow-hidden"
                               >
-                                <div className="border-l-2  flex w-fit min-w-[200px] flex-col items-center p-4  py-0 mt-4">
+                                <div className="border-l-2  flex w-fit max-h-96 overflow-y-auto custom-sc min-w-[200px] flex-col items-center p-4  py-0 mt-4">
                                   <div className="flex w-full  flex-col justify-center">
                                     {item.submenu?.map((subitem) => {
                                       return (

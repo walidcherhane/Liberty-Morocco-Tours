@@ -67,41 +67,14 @@ export const query = graphql`
         node {
           categories
           cities
-          duration
           id
-          price
-          rating
           slug
           tags
           title
           description {
             raw
           }
-          video
-          languages
-          previousPrice
-          comments {
-            id
-            rating
-            comment {
-              raw
-            }
-            author {
-              ... on ContentfulClient {
-                id
-                name
-                avatar {
-                  publicUrl
-                  gatsbyImageData
-                }
-              }
-            }
-          }
           image {
-            publicUrl
-            gatsbyImageData
-          }
-          images {
             publicUrl
             gatsbyImageData
           }

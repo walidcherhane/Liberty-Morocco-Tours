@@ -7,6 +7,19 @@ html {
   width: 100%;
 }
 
+.custom-sc::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-sc::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+.custom-sc::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
 /* =================================================================
                     Overriding react-dates Styling 
                 The order of the styles is important 

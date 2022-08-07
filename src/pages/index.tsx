@@ -17,6 +17,7 @@ import 'animate.css';
 
 const Home = () => {
   useEffect(() => {
+    if (typeof window !== `undefined` || !window) return;
     const initWow = async () => {
       const { WOW } = await import(`wowjs`);
       new WOW({
