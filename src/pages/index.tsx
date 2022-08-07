@@ -14,6 +14,7 @@ import BookWithUs from '../components/BookWithUs';
 import Testimonials from '../components/Testimonials';
 
 import 'animate.css';
+import 'react-dates/initialize';
 
 const Home = () => {
   useEffect(() => {

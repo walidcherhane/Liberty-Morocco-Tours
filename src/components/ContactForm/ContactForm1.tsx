@@ -75,11 +75,13 @@ const Form = () => {
           </div>
         ))}
         <input type="hidden" name="_template" value="table" />
-        <input
-          type="hidden"
-          name="_next"
-          value={`${window.location.protocol}//${window.location.host}/Thankyou`}
-        />
+        {typeof window !== `undefined` && (
+          <input
+            type="hidden"
+            name="_next"
+            value={`${window.location.protocol}//${window.location.host}/Thankyou`}
+          />
+        )}
         <input type="hidden" name="_captcha" value="false" />
 
         <div className="col-span-full flex flex-col gap-9">
