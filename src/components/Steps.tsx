@@ -21,7 +21,7 @@ function Steps() {
   return (
     <>
       <section className="body-font  text-gray-600">
-        <div className="container mx-auto px-5 py-24 md:py-8">
+        <div className="container mx-auto px-5 py-24 pt-0 md:py-8">
           <Title
             title="Let’s go on an adventure"
             description="Find and book a great experience."
