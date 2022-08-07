@@ -7,6 +7,8 @@ import Title from './Title';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { ToursQuery } from '@/types';
+import { GatsbyImage } from 'gatsby-plugin-image';
+
 function BestLocations() {
   const data = useStaticQuery<ToursQuery.TourItemQuery>(graphql`
     {
@@ -59,11 +61,9 @@ function BestLocations() {
                   data-wow-duration="2s"
                   className="wow animate__fadeInUp group relative mx-auto  flex w-3/4 cursor-pointer flex-col  overflow-hidden    font-poppins transition duration-500  sm:w-[320px]   "
                 >
-                  <img
-                    height={170}
-                    width={170}
+                  <GatsbyImage
                     className="h-[170px] bg-gray-300 w-full object-cover object-center "
-                    src={node.image.publicUrl}
+                    image={node.image.gatsbyImageData}
                     alt="blog"
                   />
                   <div className="inset-x-0 bottom-0 z-10 flex  grow flex-col items-center gap-y-1 bg-white">
@@ -72,7 +72,12 @@ function BestLocations() {
                         From
                         <div className=" ml-2  text-2xl font-semibold text-blue-400">
                           {node.price}
-                          <sup className="ml-1 text-sm font-normal ">$</sup>
+                          <sup className="ml-1 text-sm font-normal ">
+                            $
+                            <span className=" line-through text-gray-400 ml-2">
+                              {node.previousPrice}
+                            </span>
+                          </sup>
                         </div>
                       </div>
                       <div className="text-center text-lg capitalize font-semibold text-gray-800">
