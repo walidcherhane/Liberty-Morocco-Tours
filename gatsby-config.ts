@@ -40,13 +40,6 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `hero`,
-        path: `${__dirname}/src/images/hero`,
-      },
-    },
-    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `6bofxormpfeq`,

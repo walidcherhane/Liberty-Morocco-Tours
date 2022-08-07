@@ -1,4 +1,5 @@
 import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import { BsArrowRightShort } from 'react-icons/bs';
 function Cta1() {
   return (
@@ -6,8 +7,8 @@ function Cta1() {
       <section className="body-font relative text-gray-600  bg-blue-700 ">
         <div className="container   overflow-hidden mx-auto px-10 md:px-20 py-24 rounded-1xl ">
           <div className="absolute w-full h-full inset-0 z-0 opacity-40">
-            <img
-              src="/images/textures/2.png"
+            <StaticImage
+              src="../../images/textures/2.png"
               className="w-full h-full object-cover object-center"
               alt=""
             />

@@ -1,3 +1,4 @@
+import { StaticImage } from 'gatsby-plugin-image';
 import React, { FC, ReactNode } from 'react';
 import { BsFacebook, BsInstagram, BsTwitter, BsYoutube } from 'react-icons/bs';
 import { MdOutlineArrowRight } from 'react-icons/md';
@@ -127,8 +128,8 @@ const Footer: React.FC = () => {
 
   return (
     <div className="relative border-t border-neutral-200 bg-gray-200/50 py-24 px-12 font-poppins  lg:py-20">
-      <img
-        src="/images/textures/5.png"
+      <StaticImage
+        src="../images/textures/5.png"
         className="absolute inset-0 -z-10 h-full w-full object-cover "
         alt=""
       />

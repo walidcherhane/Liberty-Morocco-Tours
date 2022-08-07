@@ -1,35 +1,18 @@
 import DatePickRange from './DatePickRange';
 import { AiOutlineArrowDown } from 'react-icons/ai';
-import { graphql, useStaticQuery } from 'gatsby';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+import { StaticImage } from 'gatsby-plugin-image';
 function Hero() {
-  const { heroBg } = useStaticQuery(graphql`
-    {
-      heroBg: allFile(filter: { sourceInstanceName: { eq: "hero" } }) {
-        edges {
-          node {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
-      }
-    }
-  `);
-  const HERO_BG = getImage(heroBg.edges[0].node?.childImageSharp);
   return (
     <>
       <main className="w-full  transition duration-700">
         <div className="container mx-auto">
           <div className="wow animate__fadeIn relative flex flex-col  p-8  justify-start ">
             <div className="wow fadeIn absolute inset-0 -z-10  overflow-hidden rounded-[40px] after:absolute after:inset-0 after:z-10  after:bg-gray-900/20 ">
-              {HERO_BG && (
-                <GatsbyImage
-                  image={HERO_BG}
-                  alt="Hero background"
-                  className="h-full w-full  object-cover  object-center "
-                />
-              )}
+              <StaticImage
+                src="../images/hero/1.jpg"
+                alt="Hero background"
+                className="h-full w-full  object-cover  object-center "
+              />
             </div>
             <div className="z-10 flex h-full w-full flex-col items-start justify-start   py-16 px-8   md:w-full md:items-start lg:w-2/3   lg:items-start  xl:w-1/2  ">
               <h1

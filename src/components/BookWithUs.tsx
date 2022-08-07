@@ -1,4 +1,5 @@
 import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import { BsArrowRightShort } from 'react-icons/bs';
 function BookWithUs() {
@@ -20,20 +21,20 @@ function BookWithUs() {
     <>
       <section className="body-font text-gray-600">
         <div className="container mx-auto flex flex-col items-center px-5 py-16 md:flex-row">
-          <img
+          <StaticImage
             width={550}
             height={550}
             data-wow-duration="2s"
             className="wow animate__fadeIn rounded object-cover object-center"
             alt="hero"
-            src="/images/textures/1.png"
+            src="../images/textures/1.png"
           />
           <div className="flex flex-col items-start justify-start text-left font-poppins md:w-1/2 md:items-start md:pl-16 md:text-left lg:flex-grow lg:pl-24">
             <h1
               data-wow-duration="2s"
               className="wow animate__fadeInLeft title-font mb-4 text-3xl font-semibold leading-5	 text-gray-900 sm:text-5xl"
             >
-              Plan Your Trip with Trevily
+              Plan Your Trip with Toursya
             </h1>
             <p
               data-wow-duration="2.3s"

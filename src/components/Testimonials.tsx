@@ -4,6 +4,7 @@ import Title from './Title';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 
 export interface SectionClientSayProps {
   className?: string;
@@ -13,18 +14,21 @@ const DEMO_DATA = [
   {
     id: 1,
     clientName: `Tiana Abie`,
+    image: `../images/clients/client1.jpg`,
     clientAddress: `Malaysia`,
     content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s`,
   },
   {
     id: 2,
     clientName: `Lennie Swiffan`,
+    image: `../images/clients/client2.jpg`,
     clientAddress: `London`,
     content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s`,
   },
   {
     id: 3,
     clientName: `Berta Emili`,
+    image: `../images/clients/client3.jpg`,
     clientAddress: `Tokyo`,
     content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s`,
   },
@@ -64,14 +68,14 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
             centeredSlides={true}
             slidesPerView={1}
           >
-            {DEMO_DATA.map((item, index) => (
+            {DEMO_DATA.map((item) => (
               <SwiperSlide
                 key={item.id}
                 className="flex cursor-grab flex-col items-center text-center font-poppins "
               >
                 <img
-                  className="mx-auto w-24 h-24 rounded-full object-cover"
-                  src={`/images/clients/client${index + 1}.jpg`}
+                  src={item.image}
+                  className="mx-auto h-32 w-32 rounded-xl object-cover"
                   alt=""
                 />
                 <span className="mt-10 block w-4/5 text-lg sm:w-2/3  sm:text-2xl lg:w-4/5 lg:text-lg xl:w-5/6">

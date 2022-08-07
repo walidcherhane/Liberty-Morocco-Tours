@@ -1,6 +1,8 @@
 import React, { FC, Fragment } from 'react';
 import { AiOutlinePlayCircle } from 'react-icons/ai';
 import { Dialog, Transition } from '@headlessui/react';
+import { StaticImage } from 'gatsby-plugin-image';
+
 export interface StateProps {
   value: number;
   label: string;
@@ -104,10 +106,10 @@ function WhyUs() {
       />
 
       <div className="relative xl:py-32 xl:pt-10 bg-gray-400 after:absolute after:inset-0 after:bg-gray-800/60 overflow-hidden">
-        <img
+        <StaticImage
           alt="Why Us"
           className="object-cover absolute inset-0 w-full h-full "
-          src="/images/backgrounds/7.jpg"
+          src="../images/backgrounds/7.jpg"
         />
         <div className="container font-poppins relative mx-auto z-20 ">
           <div className="flex flex-col items-center justify-center xl:mb-10">
