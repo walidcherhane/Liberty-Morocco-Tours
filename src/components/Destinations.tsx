@@ -14,13 +14,7 @@ function Distinations() {
         edges {
           node {
             cities
-            duration
             id
-            price
-            rating
-            slug
-            title
-            previousPrice
             image {
               publicUrl
               gatsbyImageData
@@ -62,7 +56,7 @@ function Distinations() {
                   : 3
                 : scroll.width > 640
                 ? 2
-                : 2
+                : 1
             }
           >
             {distinations.map(({ node }) => {
