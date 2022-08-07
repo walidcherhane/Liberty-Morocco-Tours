@@ -16,7 +16,7 @@ function ToursList({ data }: PageProps<ToursQuery.AllToursQuery>) {
       <Header />
       <div className="relative bg-sky-800/30 font-poppins h-[360px]">
         <img
-          src="/images/backgrounds/2.jpg"
+          src="../../images/backgrounds/2.jpg"
           className="absolute inset-0 -z-10 object-cover w-full h-full object-center"
           alt=""
         />

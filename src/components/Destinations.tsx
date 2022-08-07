@@ -1,13 +1,13 @@
 import Title from './Title';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
-import useScroll from '../hooks/useWindowSize';
+import useWindowSize from '../hooks/useWindowSize';
 import { graphql, useStaticQuery } from 'gatsby';
 import { ToursQuery } from '@/types';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 function Distinations() {
-  const scroll = useScroll();
+  const scroll = useWindowSize();
   const data = useStaticQuery<ToursQuery.TourItemQuery>(graphql`
     {
       allContentfulTour {
