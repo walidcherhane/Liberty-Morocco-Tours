@@ -4,7 +4,6 @@ import Title from './Title';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 
 export interface SectionClientSayProps {
   className?: string;

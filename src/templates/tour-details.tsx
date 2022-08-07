@@ -556,75 +556,6 @@ const renderTourVideo = (Tour: TourProps) => {
   );
 };
 
-const renderSimilarTours = (Tour: TourProps, Tours: TourProps[]) => {
-  if (!Tour.tags) return;
-  const similarTours = Tour?.tags
-    .map((tag) => {
-      if (!tag) return null;
-      return Tours.filter(({ tags, id }) => {
-        return tags.includes(tag) && id !== Tour.id;
-      });
-    })
-    // flatten the array
-    .flat()
-    // show only 4 tours
-    .slice(0, 4);
-  return (
-    <>
-      {similarTours.length > 0 && (
-        <>
-          <h1 className="text-sky-500 text-3xl font-bold uppercase">
-            Similar Tours
-          </h1>
-          <p className="text-sm text-gray-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            consectetur, nisl eget consectetur sagittis, nisl nunc consectetur
-          </p>
-          <div className="mt-9  grid grid-col-1 lg:grid-cols-2  gap-4">
-            {similarTours.map((tour) => {
-              if (!tour) return null;
-              const plainTextDescription = documentToPlainTextString(
-                JSON.parse(tour.description.raw),
-              );
-              return (
-                <Link key={tour.id} to={`/Tours/${tour.slug}`}>
-                  <div className="cursor-pointer font-poppins ">
-                    <div className="h-full rounded-2xl bg-gray-50 border overflow-hidden">
-                      <img
-                        width={300}
-                        height={192}
-                        className="h-48 lg:h-48 md:h-36 w-full object-cover object-center scale-110 transition-all duration-400 hover:scale-100"
-                        src="/images/Destinations/1.jpg"
-                        alt="blog"
-                      />
-                      <div className="p-6 ">
-                        <h6 className="tracking-widest text-xs flex justify-start gap-1 flex-wrap  font-medium text-gray-400 mb-2">
-                          {/* Categories */}
-                          {tour.categories.map((category) => (
-                            <span key={category} className="mx-1">
-                              {category}
-                            </span>
-                          ))}
-                        </h6>
-                        <h1 className="  font-semibold text-gray-600 mb-3">
-                          {tour.title}
-                        </h1>
-                        <p className="leading-relaxed mb-3 text-xs">
-                          {plainTextDescription.substring(0, 80)}...
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </>
-      )}
-    </>
-  );
-};
-
 const renderNeedHelp = () => {
   return (
     <div className="mx-auto max-w-4xl rounded-3xl bg-blue-900 p-10 text-center">
@@ -696,7 +627,6 @@ function Tour({ data }: PageProps<ToursQuery.TourItemQuery>) {
           <div className="mt-4">
             <div className="mt-8">{renderTourVideo(tour)}</div>
             <div className="mt-8">{renderTourBookFrom()}</div>
-            {/* <div className="mt-8">{renderSimilarTours(tour, tours)}</div> */}
             <div className="mt-8">{renderNeedHelp()}</div>
           </div>
         </div>
