@@ -106,11 +106,13 @@ function WhyUs() {
       />
 
       <div className="relative xl:py-32 xl:pt-10 bg-gray-400 after:absolute after:inset-0 after:bg-gray-800/60 overflow-hidden">
-        <StaticImage
-          alt="Why Us"
-          className="object-cover absolute inset-0 w-full h-full "
-          src="../images/backgrounds/7.jpg"
-        />
+        <div className="object-cover absolute inset-0">
+          <StaticImage
+            alt="Why Us"
+            className=" w-full h-full object-cover"
+            src="../images/backgrounds/7.jpg"
+          />
+        </div>
         <div className="container font-poppins relative mx-auto z-20 ">
           <div className="flex flex-col items-center justify-center xl:mb-10">
             <button
