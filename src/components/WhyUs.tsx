@@ -1,7 +1,6 @@
-import React, { FC, Fragment, useEffect, useRef } from 'react';
+import React, { FC, Fragment } from 'react';
 import { AiOutlinePlayCircle } from 'react-icons/ai';
 import { Dialog, Transition } from '@headlessui/react';
-import { useScroll } from 'ahooks';
 export interface StateProps {
   value: number;
   label: string;
@@ -94,10 +93,6 @@ const States: FC<{ className: string }> = ({ className }) => {
 
 function WhyUs() {
   const [isModelOpen, setIsModelOpen] = React.useState(false);
-  const imageParentReff = useRef(null);
-  const scroll = useScroll(imageParentReff);
-
-  useEffect(() => {}, [scroll?.top]);
 
   return (
     <div className="relative mb-14">
