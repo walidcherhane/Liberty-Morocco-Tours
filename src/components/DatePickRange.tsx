@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BsCalendarDate, BsPerson } from 'react-icons/bs';
 import { HiOutlineLocationMarker, HiSearch } from 'react-icons/hi';
 import { MdOutlineDone } from 'react-icons/md';
-import useWindowSize from '../Hooks/useWindowSize';
+import useWindowSize from '../hooks/useWindowSize';
 import moment from 'moment';
 
 import { DateRangePicker, FocusedInputShape } from 'react-dates';
