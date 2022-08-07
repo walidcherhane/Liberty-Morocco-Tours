@@ -5,6 +5,7 @@ import { useScroll } from 'ahooks';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import { useMediaQuery } from 'react-responsive';
 import { AnimatePresence, motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [subMenuIndex, setSubMenuIndex] = useState<number>();
@@ -82,10 +83,12 @@ function Header() {
         <div className="container mx-auto">
           <div className=" mx-8 flex items-center justify-between font-poppins ">
             <Link to="/" className=" flex items-center justify-center gap-2 ">
-              <img
+              <StaticImage
+                placeholder="tracedSVG"
                 width={30}
                 height={30}
-                src="/images/icons/logo.png"
+                quality={100}
+                src="../images/icons/logo.png"
                 alt="logo"
               />
               <span className="text-lg font-bold text-gray-500">Toursya</span>

@@ -132,6 +132,7 @@ const Footer: React.FC = () => {
         <StaticImage
           src="../images/textures/5.png"
           className="h-full w-full object-cover "
+          placeholder="tracedSVG"
           alt=""
         />
       </div>
@@ -140,10 +141,10 @@ const Footer: React.FC = () => {
           <div className="col-span-2 ml-8 md:ml-0 flex h-auto  items-center justify-center md:justify-start gap-2 md:col-span-1">
             <StaticImage
               width={50}
-              placeholder={`blurred`}
               height={50}
               src="../images/icons/logo.png"
               alt="logo"
+              placeholder="tracedSVG"
             />
 
             <h1 className="text-xl font-bold  text-sky-800">Toursya</h1>

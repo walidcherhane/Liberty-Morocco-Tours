@@ -24,6 +24,7 @@ function BookWithUs() {
           <StaticImage
             width={550}
             height={550}
+            placeholder={`blurred`}
             data-wow-duration="2s"
             className="wow animate__fadeIn rounded object-cover object-center"
             alt="hero"
