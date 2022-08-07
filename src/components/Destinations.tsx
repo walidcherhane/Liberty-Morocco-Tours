@@ -63,7 +63,7 @@ function Distinations() {
               const OptImage = getImage(node.image.gatsbyImageData);
               return (
                 <SwiperSlide key={node.id}>
-                  <div className="relative mx-auto h-[310px] w-[240px] overflow-hidden rounded-xl">
+                  <div className="relative mx-auto h-[310px] bg-gray-50 w-[240px] overflow-hidden rounded-xl">
                     <div className="absolute inset-0 z-0">
                       {OptImage ? (
                         <GatsbyImage
