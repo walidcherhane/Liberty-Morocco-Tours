@@ -73,7 +73,7 @@ function Header() {
   return (
     <>
       <header
-        className={` animate__animated  animate__fast top-0  z-50 bg-white/80 py-6 backdrop-blur-lg transition duration-700 lg:py-0 ${
+        className={` animate__animated  animate__fast top-0  z-50 bg-white/80 py-3 backdrop-blur-lg transition duration-700 lg:py-0 ${
           scroll && scroll.top! > 100
             ? `fadeIn shadow-gray-10 animate__fadeInDown fixed left-0  top-0 right-0 z-50 border-b shadow-gray-900/10`
             : `animate__slideInDown relative `
@@ -83,8 +83,8 @@ function Header() {
           <div className=" mx-8 flex items-center justify-between font-poppins ">
             <Link to="/" className=" flex items-center justify-center gap-2 ">
               <img
-                width={40}
-                height={40}
+                width={30}
+                height={30}
                 src="/images/icons/logo.png"
                 alt="logo"
               />
