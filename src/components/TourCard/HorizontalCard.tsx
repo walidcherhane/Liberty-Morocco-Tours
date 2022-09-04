@@ -14,7 +14,7 @@ function HorizontalCard({
   return (
     <div>
       <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row font-poppins h-full">
-        <div className="flex-none h-[276px] xl:h-auto sm:w-60 lg:w-full xl:w-60 drop-shadow-xl  shadow-indigo-200 relative">
+        <div className="flex-none h-[276px] max-h- xl:h-auto sm:w-60 lg:w-full xl:w-60 drop-shadow-xl  shadow-indigo-200 relative">
           <GatsbyImage
             image={tour.image?.gatsbyImageData}
             alt=""

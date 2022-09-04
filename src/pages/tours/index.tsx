@@ -8,16 +8,17 @@ import WideTourCard from '../../components/TourCard/WideTourCard';
 import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import { ToursQuery } from '@/types';
+import { StaticImage } from 'gatsby-plugin-image';
 
 function ToursList({ data }: PageProps<ToursQuery.AllToursQuery>) {
   const tours = data.allContentfulTour.edges;
   return (
     <>
       <Header />
-      <div className="relative bg-sky-800/30 font-poppins h-[360px]">
-        <img
-          src="../../images/backgrounds/2.jpg"
-          className="absolute inset-0 -z-10 object-cover w-full h-full object-center"
+      <div className="relative bg-sky-800/30  font-poppins h-[360px]">
+        <StaticImage
+          src="../../src/images/backgrounds/2.jpg"
+          className="absolute  inset-0 -z-10 object-cover w-full h-full object-center"
           alt=""
         />
         <div className="container mx-auto p-8 h-full flex items-center justify-center ">
@@ -28,26 +29,14 @@ function ToursList({ data }: PageProps<ToursQuery.AllToursQuery>) {
       </div>
       <div className="container mx-auto m-10 relative">
         <div className="xl:grid flex flex-col px-8 grid-cols-1 xl:grid-cols-3 gap-8  xl:mx-20 ">
-          {tours?.map(
-            (tour, index) =>
-              index < 3 && <TourCard tour={tour.node} key={index} />,
-          )}
-
-          {tours?.map(
-            (tour, index) =>
-              index === 3 && <WideTourCard tour={tour.node} key={index} />,
-          )}
-
+          {tours?.slice(0, 3).map((tour, index) => (
+            <TourCard tour={tour.node} key={index} />
+          ))}
+          <WideTourCard tour={tours[3].node} />,
           <div className="col-span-2 col-start-2 grid grid-cols-2 gap-8 ">
-            {tours?.map(
-              (tour, index) =>
-                index > 3 && <MediumTourCard tour={tour.node} key={index} />,
-            )}
-          </div>
-          <div className="mt-8 col-span-full w-full flex justify-center font-poppins">
-            <button className="bg-gray-800 rounded-lg text-white font-semibold py-3 px-6">
-              Load More
-            </button>
+            {tours?.slice(3).map((tour, index) => (
+              <MediumTourCard tour={tour.node} key={index} />
+            ))}
           </div>
           <aside className="row-start-2 row-end-4 bg-gray-100 p-8 h-full rounded-2xl  ">
             <NewsLetter />

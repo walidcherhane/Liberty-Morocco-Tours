@@ -1,3 +1,5 @@
+import { StaticImage } from 'gatsby-plugin-image';
+
 function Features2() {
   const features = [
     {
@@ -25,8 +27,8 @@ function Features2() {
   return (
     <>
       <div className="container relative mx-auto rounded-2xl bg p-8 font-poppins overflow-hidden mb-20 ">
-        <img
-          src="/images/textures/4.jpg"
+        <StaticImage
+          src="../../images/textures/4.jpg"
           className="absolute inset-0 -z-10 h-full w-full object-cover "
           alt=""
         />
