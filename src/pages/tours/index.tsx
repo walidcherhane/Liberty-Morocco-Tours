@@ -8,21 +8,15 @@ import WideTourCard from '../../components/TourCard/WideTourCard';
 import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import { ToursQuery } from '@/types';
-import { StaticImage } from 'gatsby-plugin-image';
 
 function ToursList({ data }: PageProps<ToursQuery.AllToursQuery>) {
   const tours = data.allContentfulTour.edges;
   return (
     <>
       <Header />
-      <div className="relative bg-sky-800/30  font-poppins h-[360px]">
-        <StaticImage
-          src="../../src/images/backgrounds/2.jpg"
-          className="absolute  inset-0 -z-10 object-cover w-full h-full object-center"
-          alt=""
-        />
+      <div className="relative bg-gradient-to-r from-rose-100 to-teal-100  font-poppins h-[360px]">
         <div className="container mx-auto p-8 h-full flex items-center justify-center ">
-          <div className="text-4xl lg:text-5xl font-bold text-center text-white">
+          <div className="text-4xl lg:text-5xl font-bold text-center text-cyan-800">
             ALL TOURS LIST
           </div>
         </div>

@@ -33,13 +33,7 @@ function TravelWithUs() {
               className="h w-full rounded-2xl object-cover object-center lg:mt-20 lg:h-80 lg:w-[500px]"
               alt=""
             />
-            <div className="absolute top-10 left-10 z-0">
-              <StaticImage
-                src="../../images/textures/6.svg"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-            </div>
+
             <StaticImage
               src="../../images/backgrounds/3.jpg"
               className="mb-20 ml-auto hidden h-60 w-60 rounded-2xl object-cover  object-center lg:block"
