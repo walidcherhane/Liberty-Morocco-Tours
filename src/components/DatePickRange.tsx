@@ -137,7 +137,7 @@ export default function DatePickRange() {
     const focused = dateFocused === `startDate`;
     return (
       <div
-        className={`relative cursor-pointer flex-grow flex items-center gap-4 z-0 ${
+        className={`relative cursor-pointer flex-grow flex items-center gap-4 -z-10 ${
           focused ? `text-blue-400` : ` `
         }`}
       >
@@ -162,7 +162,7 @@ export default function DatePickRange() {
     const focused = dateFocused === `endDate`;
     return (
       <div
-        className={`relative flex cursor-pointer flex-grow items-center gap-4  z-0 ${
+        className={`relative flex cursor-pointer flex-grow items-center gap-4  -z-10 ${
           focused ? `  text-blue-400 ` : ` `
         }`}
       >
@@ -199,7 +199,7 @@ export default function DatePickRange() {
                     setCitySearch({ ...citySearch, selected: value })
                   }
                 >
-                  <div className="relative z-20 text-2xl font-bold text-gray-800">
+                  <div className="w-full z-20 text-2xl font-bold text-gray-800">
                     <Combobox.Input
                       className="bg-transparent text-2xl font-bold font-poppins text-gray-800 outline-none md:w-full"
                       displayValue={(city: any) => city}
@@ -219,7 +219,7 @@ export default function DatePickRange() {
                       leaveFrom="transform scale-100 opacity-100"
                       leaveTo="transform scale-95 opacity-0"
                     >
-                      <Combobox.Options className="custom-scroll absolute  left-1/2 z-20  mt-2 max-h-60 w-full  -translate-x-1/2 snap-y    overflow-y-scroll rounded-md bg-white py-1  text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      <Combobox.Options className="custom-scroll w-full absolute  left-0 z-20  mt-2 max-h-60 w-full   snap-y    overflow-y-scroll rounded-md bg-white py-1  text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                         {filteredCities.length === 0 &&
                         citySearch.query !== `` ? (
                           <div className="relative cursor-default select-none py-8 px-4  text-center text-sm font-normal capitalize text-gray-400">
@@ -268,7 +268,7 @@ export default function DatePickRange() {
                 </Combobox>
               </div>
 
-              <div className="flex-grow flex items-center gap-4  z-0">
+              <div className="flex-grow flex items-center gap-4 relative  -z-10">
                 <div className="text-2xl text-gray-400">
                   <BsPerson />
                 </div>
@@ -292,7 +292,7 @@ export default function DatePickRange() {
                     leaveFrom="transform scale-100 opacity-100"
                     leaveTo="transform scale-95 opacity-0"
                   >
-                    <Popover.Panel className="absolute bottom-20 right-[57%] z-50  translate-x-1/2 ">
+                    <Popover.Panel className="absolute bottom-20 right-3 md:right-[57%] z-50  translate-x-1/2 ">
                       <div className="w-[400px]  rounded-xl border-2 bg-white  p-4">
                         {travelers.map((traveler: any, index: number) => (
                           <div className="flex p-4" key={index}>
@@ -354,7 +354,7 @@ export default function DatePickRange() {
               </div>
             </div>
             <div className=" relative flex gap-8 w-full flex-col justify-start text-3xl font-bold text-gray-800 md:flex-row ">
-              <div className="absolute   ">
+              <div className="absolute">
                 <DateRangePicker
                   startDate={stateDate.startDate}
                   endDate={stateDate.endDate}
