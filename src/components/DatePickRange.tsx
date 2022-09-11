@@ -163,7 +163,7 @@ export default function DatePickRange() {
     return (
       <div
         className={`relative flex cursor-pointer flex-grow items-center gap-4  -z-10 ${
-          focused ? `  text-blue-400 ` : ` `
+          focused ? ` text-blue-400 ` : ``
         }`}
       >
         <div className="text-2xl text-gray-400">
@@ -185,11 +185,11 @@ export default function DatePickRange() {
 
   return (
     <>
-      <div className="rounded-3xl border border-white bg-gray-50/90 p-8 shadow-2xl backdrop-blur md:p-8  ">
-        <div className=" relative flex gap-4 w-full flex-col  xl:flex-row items-center">
-          <div className="font-poppins flex gap-8 flex-grow  flex-col xl:flex-row  w-full ">
-            <div className="relative flex gap-8 w-full flex-col justify-start  text-3xl font-bold text-gray-800 md:flex-row   ">
-              <div className="flex-grow flex items-center gap-4  z-0">
+      <div className="rounded-3xl border border-white bg-gray-50/90 p-8 shadow-2xl backdrop-blur md:p-8">
+        <div className=" relative flex gap-4 w-full flex-col xl:flex-row items-center">
+          <div className="font-poppins flex gap-8 flex-grow flex-col xl:flex-row w-full">
+            <div className="relative flex gap-8 w-full flex-col justify-start  text-3xl font-bold text-gray-800 md:flex-row">
+              <div className="flex-grow flex items-center gap-4 z-0">
                 <div className="text-2xl text-gray-400">
                   <HiOutlineLocationMarker />
                 </div>
@@ -219,10 +219,10 @@ export default function DatePickRange() {
                       leaveFrom="transform scale-100 opacity-100"
                       leaveTo="transform scale-95 opacity-0"
                     >
-                      <Combobox.Options className="custom-scroll w-full absolute  left-0 z-20  mt-2 max-h-60 w-full   snap-y    overflow-y-scroll rounded-md bg-white py-1  text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      <Combobox.Options className="custom-scroll w-full absolute left-0 z-20 mt-2 max-h-60 w-full overflow-y-scroll rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                         {filteredCities.length === 0 &&
                         citySearch.query !== `` ? (
-                          <div className="relative cursor-default select-none py-8 px-4  text-center text-sm font-normal capitalize text-gray-400">
+                          <div className="relative cursor-default select-none py-8 px-4 text-center text-sm font-normal capitalize text-gray-400">
                             This city is not available, please contact us for
                             special requests.
                           </div>
@@ -268,16 +268,16 @@ export default function DatePickRange() {
                 </Combobox>
               </div>
 
-              <div className="flex-grow flex items-center gap-4 relative  -z-10">
+              <div className="flex-grow flex items-center gap-4 relative -z-10">
                 <div className="text-2xl text-gray-400">
                   <BsPerson />
                 </div>
                 <Popover>
-                  <Popover.Button className="flex   font-bold text-gray-800 outline-none">
+                  <Popover.Button className="flex font-bold text-gray-800 outline-none">
                     <input
                       type="text"
                       readOnly
-                      value={total > 0 ? total + ` Guests` : `Travelers`}
+                      value={total > 0 ? total + `Guests` : `Travelers`}
                       className="bg-transparent text-2xl font-bold font-poppins text-gray-800 outline-none md:w-full"
                     />
                   </Popover.Button>
@@ -292,15 +292,15 @@ export default function DatePickRange() {
                     leaveFrom="transform scale-100 opacity-100"
                     leaveTo="transform scale-95 opacity-0"
                   >
-                    <Popover.Panel className="absolute bottom-20 right-3 md:right-[57%] z-50  translate-x-1/2 ">
-                      <div className="w-[400px]  rounded-xl border-2 bg-white  p-4">
-                        {travelers.map((traveler: any, index: number) => (
+                    <Popover.Panel className="absolute bottom-20 right-3 md:right-[57%] z-50 translate-x-1/2 ">
+                      <div className="w-[400px] rounded-xl border-2 bg-white p-4">
+                        {travelers.map((traveler, index) => (
                           <div className="flex p-4" key={index}>
                             <div className=" font-poppins grow">
-                              <div className=" text-lg font-semibold text-gray-700">
+                              <div className="text-lg font-semibold text-gray-700">
                                 {traveler.label}
                               </div>
-                              <div className="text-sm  text-gray-400 font-light">
+                              <div className="text-sm text-gray-400 font-light">
                                 {traveler.description}
                               </div>
                             </div>
@@ -319,11 +319,11 @@ export default function DatePickRange() {
                                     ]);
                                   }
                                 }}
-                                className="h-7 w-7  rounded-full border text-center  font-bold text-gray-500 disabled:cursor-not-allowed disabled:text-gray-300   "
+                                className="h-7 w-7 rounded-full border text-center font-bold text-gray-500 disabled:cursor-not-allowed disabled:text-gray-300"
                               >
                                 -
                               </button>
-                              <div className="grow px-4  font-semibold text-gray-500 ">
+                              <div className="grow px-4 font-semibold text-gray-500">
                                 {traveler.value}
                               </div>
                               <button
@@ -340,7 +340,7 @@ export default function DatePickRange() {
                                     ]);
                                   }
                                 }}
-                                className="h-7 w-7 rounded-full border text-center  font-bold text-gray-500 disabled:cursor-not-allowed disabled:text-gray-300   "
+                                className="h-7 w-7 rounded-full border text-center font-bold text-gray-500 disabled:cursor-not-allowed disabled:text-gray-300"
                               >
                                 +
                               </button>
@@ -353,7 +353,7 @@ export default function DatePickRange() {
                 </Popover>
               </div>
             </div>
-            <div className=" relative flex gap-8 w-full flex-col justify-start text-3xl font-bold text-gray-800 md:flex-row ">
+            <div className="relative flex gap-8 w-full flex-col justify-start text-3xl font-bold text-gray-800 md:flex-row">
               <div className="absolute">
                 <DateRangePicker
                   startDate={stateDate.startDate}
@@ -377,7 +377,7 @@ export default function DatePickRange() {
             onClick={() => {
               handleToursSearch();
             }}
-            className=" mt-4 flex  w-full items-center justify-center  rounded-2xl bg-gray-600 p-4 text-xl  text-neutral-50   hover:bg-gray-700 xl:mt-0 xl:w-auto xl:p-6 "
+            className="mt-4 flex w-full items-center justify-center rounded-2xl bg-gray-600 p-4 text-xl text-neutral-50 hover:bg-gray-700 xl:mt-0 xl:w-auto xl:p-6"
           >
             <HiSearch />
           </button>
