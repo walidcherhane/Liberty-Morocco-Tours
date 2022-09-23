@@ -19,27 +19,27 @@ function BookWithUs() {
   ];
   return (
     <>
-      <section className="body-font text-gray-600">
-        <div className="container mx-auto flex flex-col items-center px-5 py-16 md:flex-row">
+      <section className="body-font relative text-gray-600 mb-10">
+        <div className="container  mx-auto flex flex-col md:flex-row-reverse items-center px-5 py-16 lg:flex-row">
           <StaticImage
             width={550}
             height={550}
             placeholder={`blurred`}
             data-wow-duration="2s"
-            className="wow animate__fadeIn rounded object-cover object-center"
+            className="wow animate__fadeIn md:absolute md:-z-10 lg:relative md:opacity-30 lg:opacity-100 md:-right-60 lg:right-0 object-cover object-center"
             alt="hero"
             src="../images/textures/1.png"
           />
-          <div className="flex flex-col items-start justify-start text-left font-poppins md:w-1/2 md:items-start md:pl-16 md:text-left lg:flex-grow lg:pl-24">
+          <div className="flex flex-col items-start justify-start mt-10 lg:mt-0 text-left font-poppins lg:w-1/2 md:items-start md:text-left lg:flex-grow lg:pl-24">
             <h1
               data-wow-duration="2s"
-              className="wow animate__fadeInLeft title-font mb-4 text-3xl font-semibold leading-5	 text-gray-900 sm:text-5xl"
+              className="wow animate__fadeInLeft title-font mb-4 text-3xl font-semibold leading-5	 text-gray-900 sm:text-5xl md:text-4xl"
             >
               Plan Your Trip with Toursya
             </h1>
             <p
               data-wow-duration="2.3s"
-              className="wow animate__fadeInLeft mb-8 leading-relaxed"
+              className="wow animate__fadeInLeft mb-8 leading-relaxed "
             >
               There are many variations of passages of available but the
               majority have suffered alteration in some form, by injected hum

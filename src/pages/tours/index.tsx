@@ -26,7 +26,7 @@ function ToursList({ data }: PageProps<ToursQuery.AllToursQuery>) {
           {tours?.slice(0, 3).map((tour, index) => (
             <TourCard tour={tour.node} key={index} />
           ))}
-          <WideTourCard tour={tours[3].node} />,
+          <WideTourCard tour={tours[3].node} />
           <div className="col-span-2 col-start-2 grid grid-cols-2 gap-8 ">
             {tours?.slice(3).map((tour, index) => (
               <MediumTourCard tour={tour.node} key={index} />

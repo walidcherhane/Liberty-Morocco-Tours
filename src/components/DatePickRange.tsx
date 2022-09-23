@@ -219,7 +219,7 @@ export default function DatePickRange() {
                       leaveFrom="transform scale-100 opacity-100"
                       leaveTo="transform scale-95 opacity-0"
                     >
-                      <Combobox.Options className="custom-scroll w-full absolute left-0 z-20 mt-2 max-h-60 w-full overflow-y-scroll rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      <Combobox.Options className="custom-scroll w-full absolute left-0 z-20 mt-2 max-h-60 overflow-y-scroll rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                         {filteredCities.length === 0 &&
                         citySearch.query !== `` ? (
                           <div className="relative cursor-default select-none py-8 px-4 text-center text-sm font-normal capitalize text-gray-400">
