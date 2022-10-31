@@ -119,17 +119,17 @@ function WhyUs() {
               onClick={() => {
                 setIsModelOpen(true);
               }}
-              className="wow animate__fadeIn relative  my-20 xl:mb-10 text-center"
+              className="relative  my-20 xl:mb-10 text-center"
             >
               <span className="absolute inset-0 z-10 inline-flex animate-ping rounded-full border-2 border-sky-400  duration-150 "></span>
               <span className="absolute inset-0 z-10 inline-flex animate-ping  rounded-full  border-4 border-sky-400 duration-500 "></span>
               <span className="absolute inset-0 z-10 inline-flex animate-ping  rounded-full  border-8 border-sky-400  duration-700 "></span>
               <AiOutlinePlayCircle className="text-7xl text-sky-400/70" />
             </button>
-            <h1 className="wow animate__fadeIn text-center text-5xl xl:text-8xl xl:mb-8 font-bold text-white/60">
+            <h1 className="text-center text-5xl xl:text-8xl xl:mb-8 font-bold text-white/60">
               Why Us?
             </h1>
-            <p className="wow animate__fadeInDown mt-5 xl:mt-2 w-4/5 text-center text-white/80 lg:w-1/2  xl:w-1/2">
+            <p className="mt-5 xl:mt-2 w-4/5 text-center text-white/80 lg:w-1/2  xl:w-1/2">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse varius enim in eros elementum tristique. Maecenas
             </p>

@@ -17,7 +17,6 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import React, { ReactNode } from 'react';
 import { GalleryImageProps, ToursQuery } from '@/types';
-import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 export declare type NodeData = Record<string, any>;
 

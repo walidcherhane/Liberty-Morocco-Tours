@@ -52,7 +52,7 @@ function Steps() {
                   data-wow-delay={`${index * 0.2}s`}
                   data-wow-duration="2s"
                   key={index}
-                  className="wow animate__fadeInUp m-0 flex space-x-4 flex-col items-center text-center md:w-1/3    "
+                  className="m-0 flex space-x-4 flex-col items-center text-center md:w-1/3    "
                 >
                   <div className="mb-5 inline-flex h-64 w-64  items-center justify-center ">
                     <img

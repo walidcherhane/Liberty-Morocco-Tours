@@ -86,7 +86,7 @@ const ImagesGallery: React.FC<{ Gallery: GalleryImageProps[] }> = ({
                   <div
                     data-wow-delay={`${index * 0.1}s`}
                     data-wow-duration="2s"
-                    className={`wow animate__fadeInUp overflow-hidden p-1 md:p-2 ${
+                    className={`overflow-hidden p-1 md:p-2 ${
                       gallery.size === `small` ? `w-1/2 ` : `w-full `
                     }`}
                     key={gallery.id}
@@ -111,7 +111,7 @@ const ImagesGallery: React.FC<{ Gallery: GalleryImageProps[] }> = ({
                   <div
                     data-wow-delay={`${index * 0.1}s`}
                     data-wow-duration="2s"
-                    className={`wow animate__fadeInUp p-1 md:p-2 ${
+                    className={`p-1 md:p-2 ${
                       gallery.size === `small` ? `w-1/2` : `w-full`
                     }`}
                     key={gallery.id}

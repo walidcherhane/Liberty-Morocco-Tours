@@ -59,7 +59,7 @@ function BestLocations() {
                 <div
                   data-wow-delay={`${index * 0.2}s`}
                   data-wow-duration="2s"
-                  className="wow animate__fadeInUp group relative mx-auto  flex w-3/4 cursor-pointer flex-col  overflow-hidden    font-poppins transition duration-500  sm:w-[320px]   "
+                  className="group relative mx-auto  flex w-3/4 cursor-pointer flex-col  overflow-hidden    font-poppins transition duration-500  sm:w-[320px]   "
                 >
                   <GatsbyImage
                     className="h-[170px] bg-gray-300 w-full object-cover object-center "

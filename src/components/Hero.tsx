@@ -6,8 +6,8 @@ function Hero() {
     <>
       <main className="w-full  transition duration-700">
         <div className="container mx-auto">
-          <div className="wow animate__fadeIn relative flex flex-col  p-8  justify-start ">
-            <div className="wow fadeIn absolute inset-0 -z-10  overflow-hidden rounded-[40px] after:absolute after:inset-0 after:z-10  after:bg-gray-900/20 ">
+          <div className="relative flex flex-col  p-8  justify-start ">
+            <div className="absolute inset-0 -z-10  overflow-hidden rounded-[40px] after:absolute after:inset-0 after:z-10  after:bg-gray-900/20 ">
               <StaticImage
                 src="../images/hero/1.jpg"
                 alt="Hero background"

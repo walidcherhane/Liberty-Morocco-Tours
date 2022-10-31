@@ -14,16 +14,13 @@ function Cta1() {
             />
           </div>
           <div className="mx-auto font-poppins flex flex-col items-start sm:items-center text-white relative z-10">
-            <p className="wow animate__fadeInUp text-lg mb-4 font-semibold text-left">
+            <p className="text-lg mb-4 font-semibold text-left">
               See with real eyes
             </p>
-            <h1 className="wow animate__fadeInDown title-font mb-8 flex-grow text-4xl capitalize font-bold  sm:pr-16">
+            <h1 className="title-font mb-8 flex-grow text-4xl capitalize font-bold  sm:pr-16">
               Book a ticket and just leave
             </h1>
-            <p
-              className="md:text-center md:w-2/3 wow animate__fadeInDown"
-              data-delay="0.5s"
-            >
+            <p className="md:text-center md:w-2/3">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim quis
               amet, officiis voluptas voluptates eligendi, numquam, rerum optio
               illo cum incidunt quaerat corrupti. Inventore consectetur quia
@@ -31,8 +28,7 @@ function Cta1() {
             </p>
             <Link
               to="/contact/contact1"
-              data-delay="2s"
-              className="wow animate__fadeInDown group bg-white rounded-lg hover:shadow-2xl shadow-blue-900   transition duration-500  hover:scale-110 text-gray-900 text-center py-3 px-6 font-semibold mt-8 flex justify-center items-center gap-2"
+              className="group bg-white rounded-lg hover:shadow-2xl shadow-blue-900   transition duration-500  hover:scale-110 text-gray-900 text-center py-3 px-6 font-semibold mt-8 flex justify-center items-center gap-2"
             >
               Contact Us
               <div className=" text-2xl font-bold group-hover:translate-x-2 transition duration-500">

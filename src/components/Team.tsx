@@ -38,13 +38,13 @@ const Team: FC<{ classNames?: string }> = ({ classNames = `` }) => {
                 <div
                   data-wow-delay={`${index * 0.2}s`}
                   data-wow-duration="2s"
-                  className="wow animate__fadeIn group flex h-full flex-col items-center justify-center text-center"
+                  className="group flex h-full flex-col items-center justify-center text-center"
                   key={member.id}
                 >
                   <div className="relative mb-10  rounded-3xl overflow-hidden ">
                     <div
                       data-wow-delay={`${index * 0.5}s`}
-                      className="wow animate__fadeInDown w-[300px] h-[300px]  flex-shrink-0  after:absolute after:inset-0 after:z-10  after:transition after:duration-1000 group-hover:after:bg-sky-800/50 "
+                      className="w-[300px] h-[300px]  flex-shrink-0  after:absolute after:inset-0 after:z-10  after:transition after:duration-1000 group-hover:after:bg-sky-800/50 "
                     >
                       <GatsbyImage
                         image={OptimizedImage}
