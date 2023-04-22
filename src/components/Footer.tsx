@@ -147,7 +147,9 @@ const Footer: React.FC = () => {
               placeholder="tracedSVG"
             />
 
-            <h1 className="text-xl font-bold  text-sky-800">Toursya</h1>
+            <h1 className="text-xl font-bold  text-sky-800">
+              Liberty Morocco Tours
+            </h1>
           </div>
           <div className="col-span-2 flex items-center md:col-span-3">
             <SocialsList1 className="flex items-center space-x-3 lg:flex-col lg:items-start lg:space-x-0 lg:space-y-2.5" />

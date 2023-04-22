@@ -35,7 +35,7 @@ function BookWithUs() {
               data-wow-duration="2s"
               className="title-font mb-4 text-3xl font-semibold leading-5	 text-gray-900 sm:text-5xl md:text-4xl"
             >
-              Plan Your Trip with Toursya
+              Plan Your Trip with Liberty Morocco Tours
             </h1>
             <p data-wow-duration="2.3s" className="mb-8 leading-relaxed ">
               There are many variations of passages of available but the

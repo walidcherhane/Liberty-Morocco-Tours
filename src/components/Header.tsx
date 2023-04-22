@@ -91,7 +91,9 @@ function Header() {
                 src="../images/icons/logo.png"
                 alt="logo"
               />
-              <span className="text-lg font-bold text-gray-500">Toursya</span>
+              <span className="text-lg font-bold text-gray-500">
+                Liberty Morocco Tours
+              </span>
             </Link>
             <div
               className={`navbar absolute top-0  right-0 left-[20%]  z-20 h-screen  overflow-yd-scroll  items-center gap-8 bg-gray-50 p-4 px-8 pt-20 transition duration-700 lg:visible  lg:static lg:flex lg:h-auto lg:translate-x-0 lg:bg-transparent lg:p-0 lg:opacity-100 ${
